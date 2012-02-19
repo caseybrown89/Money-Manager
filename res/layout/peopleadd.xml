@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/peopleLinearMain"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#FFFFFF"
+    android:layout_gravity="center_horizontal"
+    android:orientation="vertical" >
+    
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/peopleAdd_Title"
+        android:textColor="#000000"
+        android:textSize="22sp"
+        android:paddingBottom="10sp"
+        android:paddingTop="10sp"/>
+ 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal"
+        android:paddingBottom="10sp">
+    	
+        <TextView 
+            android:text="@string/peopleAdd_name"
+            android:layout_width="wrap_content"
+       		android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="#000000"
+            android:paddingRight="10sp"/>
+
+        <EditText
+            android:id="@+id/peopleaddName"
+            android:layout_width="98dp"
+            android:layout_height="wrap_content"
+            android:inputType="textCapSentences"/>
+            
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="22sp"
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/peopleList_title"
+        android:textColor="#000000"
+        android:paddingBottom="10sp">
+    	
+        <TextView 
+            android:text="@string/peopleAdd_bal"
+            android:layout_width="wrap_content"
+       		android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="#000000"
+            android:paddingRight="10sp"/>
+
+        <EditText
+            android:id="@+id/peopleaddBal"
+            android:layout_width="98dp"
+            android:layout_height="wrap_content"
+            android:numeric="integer|decimal"/>
+            
+    </LinearLayout>
+    
+   <Button
+		android:id="@+id/peopleAddDone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/done"
+        android:textColor="#000000"
+        android:textSize="22sp"/>
+ 
+</LinearLayout>

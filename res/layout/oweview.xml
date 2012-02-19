@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+    android:orientation="vertical">
+	
+    <LinearLayout
+    	android:id="@+id/owe_linearLayout1"
+    	android:layout_height="wrap_content"
+    	android:layout_width="wrap_content"
+    	android:layout_gravity="center_horizontal"
+    	android:orientation="horizontal">
+	    
+	    <TextView
+	        android:id="@+id/owe_i"
+	        android:layout_height="wrap_content"
+	    	android:layout_width="wrap_content"
+			android:textColor="#FFFFFF"
+			android:textSize="18sp"
+	
+			android:text="@string/owe_i"
+			android:padding="5sp"/>
+	
+	    <CheckBox
+	        android:id="@+id/owe_iCheck"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignBottom="@+id/owe_i"/>
+    </LinearLayout>
+
+    <LinearLayout
+       	android:id="@+id/linearLayout2"
+    	android:layout_height="wrap_content"
+    	android:layout_width="wrap_content"
+    	android:layout_gravity="center_horizontal"
+    	android:orientation="horizontal">
+	    <TextView
+	        android:id="@+id/owe_they"
+	        android:layout_height="wrap_content"
+	    	android:layout_width="wrap_content"
+	        android:padding="5sp"
+	        android:text="@string/owe_they"
+	        android:textColor="#FFFFFF"
+	        android:textSize="18sp"/>
+	
+	    <CheckBox
+	        android:id="@+id/owe_theyCheck"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_above="@+id/owe_amount"/>
+    </LinearLayout>
+
+    <LinearLayout
+       	android:id="@+id/linearLayout3"
+    	android:layout_height="wrap_content"
+    	android:layout_width="wrap_content"
+    	android:layout_gravity="center_horizontal"
+    	android:orientation="horizontal">
+	    <TextView
+	        android:id="@+id/owe_amountText"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="@string/entry_Amount"
+	        android:textColor="#FFFFFF"
+	        android:textSize="18sp"
+	        android:paddingLeft="10sp"
+	        android:paddingRight="10sp" />
+	
+	    <EditText
+	        android:id="@+id/owe_amount"
+	        android:layout_width="80dp"
+	        android:layout_height="wrap_content"
+	        android:paddingRight="10sp"
+	        android:numeric="integer|decimal"/>
+	</LinearLayout>
+    <Button
+        android:id="@+id/owe_done"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/owe_amount"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/done" />
+
+</LinearLayout>

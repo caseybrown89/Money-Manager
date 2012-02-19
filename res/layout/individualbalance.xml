@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:background="#FFFFFF">
+    
+    <TextView
+        android:id="@+id/indiv_Name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"
+        android:textSize="22sp"
+        android:text="Replace Me"/>
+    
+	<ListView
+	    android:id="@android:id/list"
+	    android:layout_width="fill_parent"
+	    android:layout_height="340dp"
+	    android:gravity="center_horizontal"/>
+
+	<TextView
+	    android:id="@android:id/empty"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:text="@string/viewBal_empty"/>
+	
+	<LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="5sp"
+        android:paddingBottom="5sp"
+        android:paddingRight="10sp"
+        android:layout_gravity="right">
+        
+    	<TextView
+		    android:id="@+id/indiv_balance"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:text="@string/viewBal_bal"/>
+    	
+	    <TextView
+		    android:id="@+id/indiv_balanceAmt"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:text="0"
+		    android:paddingLeft="10sp"/>
+    	
+    </LinearLayout>
+    
+	<LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="5sp"
+        android:paddingBottom="5sp"
+        android:layout_gravity="center_horizontal">
+
+		<Button
+		    android:id="@+id/indiv_editBal" 
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:textColor="#000000"
+		    android:textSize="18sp"
+		    android:paddingRight="10sp"
+		    android:text="@string/viewBal_edit"/>
+
+		<Button
+		    android:id="@+id/indiv_delUser"
+			android:layout_width="wrap_content"
+		  	android:layout_height="wrap_content"
+		  	android:textColor="#000000"
+		  	android:textSize="18sp"
+		  	android:text="@string/viewBal_del"	/>
+	</LinearLayout>
+</LinearLayout>
