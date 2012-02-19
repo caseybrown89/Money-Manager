@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--  Activity Names -->
+    <string name="mainTitle">Money Tracker</string>
+    <string name="activity_main">Money Manager</string>
+    <string name="activity_balance">Balance View</string>
+    <string name="activity_newEntry">New Entry</string>
+    <string name="activity_peopleList">People List</string>
+    <string name="activity_owe">Owe</string>
+    <string name="activity_addPeople">People Add</string>
+    <string name="activity_indivBal">Individual Balance</string>
+    <string name="activity_editBalance">Edit Balance</string>
+    
+    <!-- Application Defaults -->
+    <string name="defaultTextTitleSize">22sp</string>
+    <string name="defaultTextSize">18sp</string>
+    <string name="defaultTextColor">#000000</string>
+    <string name="defaultBackgroundColor">#FFFFFF</string>
+    
+    <!--  Strings by screen -->
+    <!--  Reusable Strings -->
+    <string name="back">Back</string>
+    <string name="done">Done</string>
+    
+    <!--  Title Screen -->
+    <string name="title_mainTitle">MoneyManager</string>
+    <string name="title_balanceView">Quick Balances View</string>
+    <string name="title_addNew">Add New Entry</string>
+    <string name="title_editBal">Edit Balances</string>
+    <string name="title_about">About</string>
+    
+    <!--  View Balances Screen -->
+    <string name="balance_mainTitle">Balances</string>
+    <string name="balance_clickTitle">Edit Balances</string>
+    <string name="emptyBalances">No Active Balances!</string>
+    
+    <!--  New Entry Screen -->
+    <string name="entry_mainTitle">New Entry</string>
+    <string name="entry_Who">Who:</string>
+    <string name="entry_Where">Where:</string>
+    <string name="entry_Amount">Amount:</string>
+    <string name="entry_Notes">Notes:</string>
+    <string name="entry_Submit">Submit</string>
+    <string name="entry_divide">Divide Total Balance</string>
+
+    <!--  People List Screen -->
+    <string name="peopleList_title">Add People</string>
+    <string name="peopleList_addNew">Add New Person</string>
+    <string name="peopleList_done">Done</string>
+
+    <!-- Owe Screen -->
+    <string name="owe_Title">Who Owes?</string>
+    <string name="owe_they">They Owe Me</string>
+    <string name="owe_i">I Owe Them</string>
+
+    <!-- People Add Screen -->
+    <string name="peopleAdd_Title">Add Person</string>
+    <string name="peopleAdd_name">Name:</string>
+    <string name="peopleAdd_bal">Existing Balance:</string>
+
+    <!-- View Balance Screen -->
+    <string name="viewBal_bal">Balance:</string>
+    <string name="viewBal_edit">Edit Balance</string>
+    <string name="viewBal_del">Delete User</string>
+    <string name="viewBal_empty">No Entries!</string>
+
+    <!-- Delete Modal -->
+    <string name="del_yes">Yes</string>
+    <string name="del_no">No</string>
+    
+    <!-- Edit Balance Screen -->
+    <string name="editBal_title">Edit Balance</string>
+    <string name="editBal_currAmount">Current Amount:</string>
+    <string name="editBal_why">Why:</string>
+    <string name="editBal_amount">Amount:</string>
+
+</resources>

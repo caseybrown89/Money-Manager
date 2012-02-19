@@ -1,0 +1,5 @@
+1) View Adapter for IndividualBalanceActivity
+2) Check updating in DB for multiple users on NewEntryActivity
+3) Rework messages for Modal overlay when editing existing IndividualBalance
+4) Consolidate Quick Balance view and Edit Balance view
+5) Fix pre existing balance issue

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/peopleLinearMain"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_gravity="center_horizontal"
+    android:background="#FFFFFF"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:paddingBottom="10sp"
+        android:paddingTop="10sp"
+        android:text="@string/peopleList_title"
+        android:textColor="#000000"
+        android:textSize="22sp" />
+
+    <Button
+        android:id="@+id/peopleListAddNew"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/peopleList_addNew"
+        android:textColor="#000000" />
+
+    <ListView
+        android:id="@android:id/android:list"
+        android:layout_width="fill_parent"
+        android:layout_height="316dp"
+        android:background="#FFFFFF"
+        android:gravity="center_horizontal"
+        android:textColor="#000000">
+    </ListView>
+
+     <TextView
+	    android:id="@android:id/empty"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_gravity="center_horizontal"
+	    android:text="No Users Exist!"
+	    android:paddingTop="10sp"
+	    android:paddingBottom="10sp"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="10sp"
+        android:layout_gravity="center_horizontal">
+	    <Button
+	        android:id="@+id/backPeopleList"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center_horizontal"
+	        android:text="@string/peopleList_done"
+	        android:textSize="22sp" />
+	</LinearLayout>
+</LinearLayout>

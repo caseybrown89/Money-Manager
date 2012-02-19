@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:background="#FFFFFF">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="@string/editBal_title"
+        android:textColor="#000000"
+        android:textSize="22sp"
+        android:paddingTop="10sp"
+        android:paddingBottom="25sp" />
+	
+	<LinearLayout
+		android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="horizontal"
+	    android:gravity="center_horizontal"
+	    android:paddingBottom="10sp">
+	        
+		<TextView
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:text="@string/editBal_currAmount"
+		    android:textColor="#000000"
+		    android:textSize="18sp"
+		    android:paddingRight="5sp"/>
+	    
+	    <TextView
+	        android:id="@+id/editBal_amt"
+	        android:textColor="#000000"
+		    android:textSize="18sp"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"/>
+	</LinearLayout>
+	
+    <LinearLayout
+		android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="horizontal"
+	    android:gravity="center_horizontal"
+	    android:paddingBottom="10sp">
+	        
+		<TextView
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:text="@string/editBal_why"
+		    android:textColor="#000000"
+		    android:textSize="18sp"
+		    android:paddingRight="5sp"/>
+	    
+	    <EditText
+	        android:id="@+id/editBal_whereBox"
+	        android:layout_width="152dp"
+	        android:layout_height="wrap_content"
+	        android:inputType="textCapSentences"/>
+	</LinearLayout>
+	
+    <LinearLayout
+		android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="horizontal"
+	    android:gravity="center_horizontal"
+	    android:paddingBottom="10sp">
+	        
+		<TextView
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:text="@string/editBal_amount"
+		    android:textColor="#000000"
+		    android:textSize="18sp"
+		    android:paddingRight="5sp"/>
+
+	    <EditText
+	        android:id="@+id/editBal_amountBox"
+	        android:layout_width="152dp"
+	        android:layout_height="wrap_content"
+	        android:textSize="18sp"
+	        android:focusable="false"
+	        android:focusableInTouchMode="false"
+	        android:clickable="true"/>
+
+	</LinearLayout>
+	
+   	<LinearLayout
+		android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="horizontal"
+	    android:gravity="center_horizontal"
+	    android:paddingBottom="10sp">
+	        
+		<TextView
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:text="@string/entry_Notes"
+		    android:textColor="#000000"
+		    android:textSize="18sp"
+		    android:paddingRight="5sp"/>
+		<EditText
+		    android:id="@+id/editBal_notesBox"
+		    android:layout_height="95dp"
+		    android:layout_width="152dp"
+		    android:inputType="textMultiLine" >
+		</EditText>
+   	</LinearLayout>
+
+   	<Button
+   	    android:id="@+id/editBal_submitButton"
+   	    android:layout_width="wrap_content"
+   	    android:layout_height="wrap_content"
+   	    android:text="@string/entry_Submit" />
+
+</LinearLayout>
