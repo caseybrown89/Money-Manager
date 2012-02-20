@@ -1,13 +1,12 @@
 package com.caseynbrown.moneymanager;
-import java.text.DecimalFormat;
+import android.graphics.Color;
+import android.widget.EditText;
 
 public class HelperMethods {
 
-	static float roundFloat(float amount){
-		DecimalFormat twoDForm = new DecimalFormat("#.##");
-		return Float.valueOf(twoDForm.format(amount));
-	}
-
+	/* Takes a string representation of an amount and returns whether it is
+	 * valid or not.  Valid examples include x.xx, x., and .xx.
+	 */
 	static boolean validAmount(String amt){
 		String[] splitStrings = amt.split("\\.");
 
@@ -23,6 +22,9 @@ public class HelperMethods {
 		}
 	}
 
+	/* Takes a string representation of an amount and returns its integer
+	 * equivalent.  Ex. 4.96 --> 496
+	 */
 	static String intToDollar(int i){
 		String sign;
 
@@ -53,6 +55,9 @@ public class HelperMethods {
 		}
 	}
 
+	/* Takes an integer representation of an amount and returns its string
+	 * equivalent.  Ex. 496 --> 4.96
+	 */
 	static int dollarToInt(String dol){
 		String sign = dol.substring(0, 1);
 		boolean negative;
@@ -85,6 +90,23 @@ public class HelperMethods {
 		} else {
 			return finalAmount;
 		}
+	}
+
+	/* Update the color and text of the EditText box */
+	public static void updateAmountBox(EditText amountBox, boolean neg, String amt) {
+		String sign;
+		int color;
+
+		if (neg) {
+			sign = "-";
+			color = Color.RED;
+		} else {
+			sign = "+";
+			color = Color.parseColor("#00A300");
+		}
+
+		amountBox.setText(sign + amt);
+		amountBox.setTextColor(color);
 	}
 
 

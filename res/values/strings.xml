@@ -28,7 +28,7 @@
     <string name="title_balanceView">Quick Balances View</string>
     <string name="title_addNew">Add New Entry</string>
     <string name="title_editBal">Edit Balances</string>
-    <string name="title_about">About</string>
+    <string name="title_help">Help</string>
     
     <!--  View Balances Screen -->
     <string name="balance_mainTitle">Balances</string>
@@ -51,8 +51,8 @@
 
     <!-- Owe Screen -->
     <string name="owe_Title">Who Owes?</string>
-    <string name="owe_they">They Owe Me</string>
-    <string name="owe_i">I Owe Them</string>
+    <string name="owe_they">I Lent</string>
+    <string name="owe_i">I Borrowed</string>
 
     <!-- People Add Screen -->
     <string name="peopleAdd_Title">Add Person</string>

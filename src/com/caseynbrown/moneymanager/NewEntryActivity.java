@@ -129,24 +129,8 @@ public class NewEntryActivity extends Activity{
 
 		@Override
 		public void ready(boolean negative, String amount) {
-			updateAmount(negative, amount);
+			HelperMethods.updateAmountBox(amountBox, negative, amount);
 		}
-	}
-
-	public void updateAmount(boolean neg, String amt){
-		String sign;
-		int color;
-
-		if (neg){
-			sign = "-";
-			color = Color.RED;
-		} else {
-			sign = "+";
-			color = Color.parseColor("#00A300");
-		}
-
-		this.amountBox.setText(sign+amt);
-		this.amountBox.setTextColor(color);
 	}
 
 	@Override

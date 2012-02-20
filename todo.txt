@@ -2,9 +2,9 @@ In no particular order:
 
 1) Set trigger in DB to update main table balance on new entry
 2) Check updating in DB for multiple users on NewEntryActivity
-3) Rework messages for Modal overlay when editing existing IndividualBalance
 4) Consolidate Quick Balance view and Edit Balance view (maybe)
-5) Fix pre existing balance issue
 6) Put individual balance table in scroll view
 7) Change 'About' to 'Help' and explain the red and green balance conventions
 8) Add option to include yourself when dividing balance, evenly divide balance with remainders by using mod
+9) Display error message when invalid amount provided in modal amount
+10) Persist amount in modal amount display if revisited
