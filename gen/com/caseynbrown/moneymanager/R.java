@@ -13,8 +13,9 @@ public final class R {
     public static final class drawable {
         public static final int checkmark=0x7f020000;
         public static final int checkmarksmall=0x7f020001;
-        public static final int dollarbill=0x7f020002;
-        public static final int ic_launcher=0x7f020003;
+        public static final int dollarbills=0x7f020002;
+        public static final int dollarsigns=0x7f020003;
+        public static final int ic_launcher=0x7f020004;
     }
     public static final class id {
         public static final int about=0x7f050016;
@@ -144,10 +145,10 @@ public final class R {
         /**   People List Screen 
          */
         public static final int peopleList_title=0x7f04001e;
-        public static final int title_about=0x7f040013;
         public static final int title_addNew=0x7f040011;
         public static final int title_balanceView=0x7f040010;
         public static final int title_editBal=0x7f040012;
+        public static final int title_help=0x7f040013;
         /**   Title Screen 
          */
         public static final int title_mainTitle=0x7f04000f;

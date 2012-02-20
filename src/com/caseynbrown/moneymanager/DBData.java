@@ -36,7 +36,7 @@ public class DBData extends SQLiteOpenHelper {
 		db.execSQL("CREATE TABLE " + TABLE_NAME_PEOPLE + "("
 				+_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
 				+ NAME_PEOPLE + " STRING NOT NULL, "
-				+ AMOUNT_PEOPLE + " FLOAT);");
+				+ AMOUNT_PEOPLE + " INTEGER);");
 		db.execSQL("CREATE TABLE " + TABLE_NAME_ENTRY + " ("
 				+ _ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
 				+ USER_ENTRY + " INTEGER NOT NULL, "
