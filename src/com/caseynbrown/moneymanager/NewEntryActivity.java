@@ -7,7 +7,6 @@ import static com.caseynbrown.moneymanager.ConstantsDB.DATE_ENTRY;
 import static com.caseynbrown.moneymanager.ConstantsDB.NAME_PEOPLE;
 import static com.caseynbrown.moneymanager.ConstantsDB.NOTES_ENTRY;
 import static com.caseynbrown.moneymanager.ConstantsDB.TABLE_NAME_ENTRY;
-import static com.caseynbrown.moneymanager.ConstantsDB.TABLE_NAME_PEOPLE;
 import static com.caseynbrown.moneymanager.ConstantsDB.TITLE_ENTRY;
 import static com.caseynbrown.moneymanager.ConstantsDB.USER_ENTRY;
 
@@ -18,7 +17,6 @@ import java.util.Date;
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -202,7 +200,7 @@ public class NewEntryActivity extends Activity{
 	    		for (int i = 0; i < this.selectedIds.size(); i++){
 	    			int id = this.selectedIds.get(i);
 	    			addNewEntry(db, id, newAmount, title, notes);
-	    			updateUserBalance(db, id, newAmount);
+
 	    		}
 
 	    	// Update for one user
@@ -211,7 +209,7 @@ public class NewEntryActivity extends Activity{
 	    		SQLiteDatabase db = database.getWritableDatabase();
 	    		addNewEntry(db, this.selectedIds.get(0), amount, title, notes);
 	    		// Update the running balance for the user
-	    		updateUserBalance(db, this.selectedIds.get(0), amount);
+
 	    	}
     	} finally {
     		database.close();
@@ -230,26 +228,6 @@ public class NewEntryActivity extends Activity{
     	values.put(AMOUNT_ENTRY, amount);
     	values.put(NOTES_ENTRY, notes);
     	db.insertOrThrow(TABLE_NAME_ENTRY, null, values);
-    }
-
-    private void updateUserBalance(SQLiteDatabase db, int id, int amount){
-
-    	String retrieveValue = "SELECT * "+" FROM "+TABLE_NAME_PEOPLE+" WHERE "
-    		+_ID+"="+id;
-    	Cursor retrieveCursor = db.rawQuery(retrieveValue, null);
-    	startManagingCursor(retrieveCursor);
-
-    	int oldAmount = 0;
-    	String name = "";
-    	if (retrieveCursor.moveToNext()){
-	    	oldAmount = retrieveCursor.getInt(retrieveCursor.getColumnIndex(AMOUNT_PEOPLE));
-	    	name = retrieveCursor.getString(retrieveCursor.getColumnIndex(NAME_PEOPLE));
-    	}
-    	int newAmount = oldAmount + amount;
-
-    	String updateValue = "UPDATE "+TABLE_NAME_PEOPLE+" SET "+AMOUNT_PEOPLE+"="+newAmount
-    		+" WHERE "+_ID+"="+id+";";
-    	db.execSQL(updateValue);
     }
 
     // Check that there all necessary fields are filled.

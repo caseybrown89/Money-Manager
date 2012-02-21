@@ -46,7 +46,7 @@ public class PeopleAddActivity extends Activity {
 					String amountVal = amountEdit.getText().toString();
 					int newAmount;
 					if (amountVal.equals("")) {
-						newAmount = HelperMethods.dollarToInt("0");
+						newAmount = HelperMethods.dollarToInt("+0");
 					} else {
 						newAmount = HelperMethods.dollarToInt(amountVal);
 					}

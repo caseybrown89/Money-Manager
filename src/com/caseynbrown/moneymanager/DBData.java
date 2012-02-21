@@ -45,6 +45,12 @@ public class DBData extends SQLiteOpenHelper {
 				+ AMOUNT_ENTRY + " INTEGER NOT NULL, "
 				+ NOTES_ENTRY + " STRING, " +
 				"FOREIGN KEY ("+ USER_ENTRY +") REFERENCES "+TABLE_NAME_PEOPLE+" ("+_ID+") ON DELETE CASCADE);");
+		String test = "CREATE TRIGGER update_total_balance AFTER INSERT ON "+TABLE_NAME_ENTRY+" BEGIN" +
+		"UPDATE "+TABLE_NAME_PEOPLE+" SET "+AMOUNT_PEOPLE+" = "+AMOUNT_PEOPLE+" + NEW."+AMOUNT_ENTRY+" WHERE "+_ID+" = NEW."+USER_ENTRY+";" +
+		"END;";
+		db.execSQL("CREATE TRIGGER update_total_balance AFTER INSERT ON "+TABLE_NAME_ENTRY+" BEGIN " +
+				"UPDATE "+TABLE_NAME_PEOPLE+" SET "+AMOUNT_PEOPLE+" = "+AMOUNT_PEOPLE+" + NEW."+AMOUNT_ENTRY+" WHERE "+_ID+" = NEW."+USER_ENTRY+";" +
+						"END;");
 	}
 
 	@Override
