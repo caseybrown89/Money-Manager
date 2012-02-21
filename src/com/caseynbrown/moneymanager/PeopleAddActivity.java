@@ -47,6 +47,7 @@ public class PeopleAddActivity extends Activity {
 					int newAmount;
 					if (amountVal.equals("")) {
 						newAmount = HelperMethods.dollarToInt("+0");
+
 					} else {
 						newAmount = HelperMethods.dollarToInt(amountVal);
 					}

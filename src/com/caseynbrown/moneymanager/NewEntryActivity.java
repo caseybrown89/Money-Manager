@@ -200,7 +200,6 @@ public class NewEntryActivity extends Activity{
 	    		for (int i = 0; i < this.selectedIds.size(); i++){
 	    			int id = this.selectedIds.get(i);
 	    			addNewEntry(db, id, newAmount, title, notes);
-
 	    		}
 
 	    	// Update for one user
@@ -208,7 +207,6 @@ public class NewEntryActivity extends Activity{
 	    		// Add a new entry for that user
 	    		SQLiteDatabase db = database.getWritableDatabase();
 	    		addNewEntry(db, this.selectedIds.get(0), amount, title, notes);
-	    		// Update the running balance for the user
 
 	    	}
     	} finally {
