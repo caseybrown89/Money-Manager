@@ -30,19 +30,24 @@ import android.widget.Toast;
 
 public class EditBalanceActivity extends Activity{
 
-	// DB People
+	/* DB related */ 
 	private DBData database;
 	private static String[] FROM = {_ID, NAME_PEOPLE, AMOUNT_PEOPLE};
 	private static String ORDER_BY = NAME_PEOPLE + " DESC";
 	private static int[] TO = {0, R.id.rowName, 0 };
 
-	// Other
 	int selectedId;
 	int amount;
 	protected static final int PEOPLE_LIST_CREATE = 0;
 	protected static final int OWE_CREATE = 1;
 	EditText whyBox, notesBox, amountBox;
 	String plusminus;
+	
+	/* Create boolean and string objects to persist amount from modal amount window If these
+     * are set, the modal amount window will automatically be filled with these values
+     */
+    boolean negative = false;
+    String amountString = "";
 
 	@Override
     public void onCreate(Bundle savedInstanceState) {
@@ -98,7 +103,7 @@ public class EditBalanceActivity extends Activity{
 	}
 
 	public void showModal(){
-		ModalAmount d = new ModalAmount(this, new OnReadyListener());
+		ModalAmount d = new ModalAmount(this, new OnReadyListener(), this.amountString, this.negative);
 		d.show();
 	}
 
@@ -106,8 +111,10 @@ public class EditBalanceActivity extends Activity{
 	private class OnReadyListener implements ModalAmount.ReadyListener{
 
 		@Override
-		public void ready(boolean negative, String amount) {
-			updateAmount(negative, amount);
+		public void ready(boolean negativeReturned, String amountReturned) {
+			updateAmount(negativeReturned, amountReturned);
+			negative = negativeReturned;
+			amountString = amountReturned;
 		}
 	}
 
@@ -138,11 +145,6 @@ public class EditBalanceActivity extends Activity{
     		// Add a new entry for that user
     		SQLiteDatabase db = database.getWritableDatabase();
     		addNewEntry(db, this.selectedId, amount, title, notes);
-
-    		// Update the running balance for the user
-    		db = database.getWritableDatabase();
-    		updateUserBalance(db, this.selectedId, amount);
-
     	} finally {
     		database.close();
     	}
@@ -160,24 +162,6 @@ public class EditBalanceActivity extends Activity{
     	values.put(AMOUNT_ENTRY, amount);
     	values.put(NOTES_ENTRY, notes);
     	db.insertOrThrow(TABLE_NAME_ENTRY, null, values);
-    }
-
-    private void updateUserBalance(SQLiteDatabase db, int id, double amount){
-
-    	String retrieveValue = "SELECT * "+" FROM "+TABLE_NAME_PEOPLE+" WHERE "
-    		+_ID+"="+id;
-    	Cursor retrieveCursor = db.rawQuery(retrieveValue, null);
-    	startManagingCursor(retrieveCursor);
-
-    	double oldAmount = 0;
-    	if (retrieveCursor.moveToNext()){
-	    	oldAmount = retrieveCursor.getDouble(retrieveCursor.getColumnIndex(AMOUNT_PEOPLE));
-	    }
-    	double newAmount = oldAmount + amount;
-
-    	String updateValue = "UPDATE "+TABLE_NAME_PEOPLE+" SET "+AMOUNT_PEOPLE+"="+newAmount
-    		+" WHERE "+_ID+"="+id+";";
-    	db.execSQL(updateValue);
     }
 
     // Check that there all necessary fields are filled.

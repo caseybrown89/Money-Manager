@@ -19,6 +19,12 @@ public class PeopleAddActivity extends Activity {
 	private DBData db;
 	private EditText nameEdit, amountEdit;
 	private Button doneButton;
+	
+	/* Create boolean and string objects to persist amount from modal amount window If these
+     * are set, the modal amount window will automatically be filled with these values
+     */
+    boolean negative = false;
+    String amount = "";
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -36,7 +42,7 @@ public class PeopleAddActivity extends Activity {
 			@Override
 			/*
 			 * If user clicks on Done, check for input. If no input exists, show
-			 * error toast Otherwise, add a new user to the DB and return to the
+			 * error toast. Otherwise, add a new user to the DB and return to the
 			 * previous activity
 			 */
 			public void onClick(View v) {
@@ -79,7 +85,7 @@ public class PeopleAddActivity extends Activity {
 
 	/* Displays a Modal amount box */
 	public void showModal() {
-		ModalAmount d = new ModalAmount(this, new OnReadyListener());
+		ModalAmount d = new ModalAmount(this, new OnReadyListener(), this.amount, this.negative);
 		d.show();
 	}
 
@@ -87,8 +93,10 @@ public class PeopleAddActivity extends Activity {
 	private class OnReadyListener implements ModalAmount.ReadyListener {
 
 		@Override
-		public void ready(boolean negative, String amount) {
-			HelperMethods.updateAmountBox(amountEdit, negative, amount);
+		public void ready(boolean negativeReturned, String amountReturned) {
+			HelperMethods.updateAmountBox(amountEdit, negativeReturned, amountReturned);
+			negative = negativeReturned;
+			amount = amountReturned;
 		}
 	}
 

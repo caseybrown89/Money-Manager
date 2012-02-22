@@ -28,42 +28,52 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-// This class is used on the "Quick Balance View" and "Edit Balances" screens.
+/* Activity for entering new entries into DB.  Used on 'New Entry' and 'Update Balance
+ * screens
+ */
 public class NewEntryActivity extends Activity{
 
-	// DB People
+	/* DB related */
 	private DBData database;
 	private static String[] FROM = {_ID, NAME_PEOPLE, AMOUNT_PEOPLE};
 	private static String ORDER_BY = NAME_PEOPLE + " DESC";
 	private static int[] TO = {0, R.id.rowName, 0 };
 
-	// Other
-	int numIds;
+	/* Create boolean and string objects to persist amount from modal amount window If these
+     * are set, the modal amount window will automatically be filled with these values
+     */
+    boolean negative = false;
+    String amount = "";
+	
+	/* An entry can be created for multiple people */
+	int numIds = 0;
 	ArrayList<Integer> selectedIds;
 	ArrayList<String> selectedNames;
 	protected static final int PEOPLE_LIST_CREATE = 0;
-	protected static final int OWE_CREATE = 1;
+
+	/* Form elements */
 	TextView whoBox;
 	EditText whereBox, amountBox, notesBox;
 	CheckBox check;
-	String plusminus;
 
 	@Override
     public void onCreate(Bundle savedInstanceState) {
-        this.numIds = 0;
 		super.onCreate(savedInstanceState);
-        setContentView(R.layout.newentry);
+		setContentView(R.layout.newentry);
         database = new DBData(this);
+        
+        /* Do not highlight any form fields */
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
-
-        // Get the interactive elements from screen.
+        
+        /* Get the interactive elements from screen. */
         this.whoBox = ((TextView) findViewById(R.id.entry_whoBox));
         this.whereBox = ((EditText) findViewById(R.id.entry_whereBox));
         this.amountBox = ((EditText) findViewById(R.id.entry_amountBox));
         this.notesBox = ((EditText) findViewById(R.id.entry_notesBox));
         this.check = ((CheckBox) findViewById(R.id.entry_divideCheckBox));
 
-        // Add click listeners for the buttons
+        /* Add listeners for fields/buttons */
+        /* Bring up list to select people for the entry */
         this.whoBox.setOnClickListener(
         		new EditText.OnClickListener(){
         			@Override public void onClick(View view){
@@ -72,6 +82,7 @@ public class NewEntryActivity extends Activity{
         			}
         		});
 
+        /* Bring up a modal pop up to enter amount */
         this.amountBox.setOnClickListener(
         		new EditText.OnClickListener(){
         			@Override public void onClick(View view){
@@ -79,16 +90,15 @@ public class NewEntryActivity extends Activity{
         			}
         		});
 
-        // Quick Balance
+        /* Submit the entry */
         ((Button) findViewById(R.id.submitButton)).setOnClickListener(
         		new Button.OnClickListener() {
         			@Override
         			public void onClick(View view){
-        				System.out.println("clicked submit button");
-        				// Check that the proper fields are filled.
+        				/* Input validation */
         				ArrayList<String> invalidFields = inputValidation();
         				if (invalidFields.size() > 0){
-        					// Do a toast
+        					/* Toast error */
         					makeToastError(invalidFields);
         				} else {
         					try {
@@ -101,6 +111,9 @@ public class NewEntryActivity extends Activity{
     				}
         		});
 
+        /* If checked, divide the total amount entered among all people for entry.  Otherwise,
+         * give the amount provided to each person in the entry.
+         */
         ((TextView) findViewById(R.id.entry_divideText)).setOnClickListener(
         		new TextView.OnClickListener() {
         			@Override
@@ -110,24 +123,20 @@ public class NewEntryActivity extends Activity{
         		});
 	}
 
-	@Override
-	public void onDestroy(){
-		super.onDestroy();
-
-		this.database.close();
-	}
-
+	/* Display the modal amount pop up */
 	public void showModal(){
-		ModalAmount d = new ModalAmount(this, new OnReadyListener());
+		ModalAmount d = new ModalAmount(this, new OnReadyListener(), this.amount, negative);
 		d.show();
 	}
 
-	// Get the amount back from the Modal Listener
+	/* Get the amount back from the Modal Listener */
 	private class OnReadyListener implements ModalAmount.ReadyListener{
 
 		@Override
-		public void ready(boolean negative, String amount) {
-			HelperMethods.updateAmountBox(amountBox, negative, amount);
+		public void ready(boolean negativeReturned, String amountReturned) {
+			HelperMethods.updateAmountBox(amountBox, negativeReturned, amountReturned);
+			amount = amountReturned;
+			negative = negativeReturned;
 		}
 	}
 
@@ -138,7 +147,7 @@ public class NewEntryActivity extends Activity{
 		CheckBox check = ((CheckBox) findViewById(R.id.entry_divideCheckBox));
 		if (this.numIds > 0){
 
-			// Set the button to display the users
+			/* Set the Who button to display all users */
 	        String displayNames = "";
 	        for (int i = 0; i < this.selectedNames.size(); i++){
 	        	String s = this.selectedNames.get(i);
@@ -150,7 +159,7 @@ public class NewEntryActivity extends Activity{
 	        }
         	this.whoBox.setText(displayNames);
 
-	        // Enable the divide checkbox
+	        /* Enable the 'Divide' checkbox */
         	if (this.numIds > 1){
 	        	check.setEnabled(true);
         	}
@@ -164,7 +173,8 @@ public class NewEntryActivity extends Activity{
     public void onActivityResult(int requestCode, int resultCode, Intent data){
     	super.onActivityResult(requestCode, resultCode, data);
     	switch(requestCode){
-    		case(PEOPLE_LIST_CREATE) : {
+    	/* Set the id and name arrays to the people selected on the PeopleListActivity */	
+    	case(PEOPLE_LIST_CREATE) : {
     			if (resultCode == Activity.RESULT_OK){
     				// Update instance variables
     				this.selectedIds = data.getIntegerArrayListExtra("ids");
@@ -177,16 +187,16 @@ public class NewEntryActivity extends Activity{
 
     private void updateSQL(){
 
-    	// Extract the data from the input fields.
+    	/* Get data from form fields */
     	int amount = HelperMethods.dollarToInt(this.amountBox.getText().toString());
     	String title = this.whereBox.getText().toString();
     	String notes = this.notesBox.getText().toString();
 
     	try {
-    		// Update for multiple users
+    		/* SQL update for multiple people */
     		if (this.selectedIds.size() > 1){
 
-    			// Determine the amount for the entry
+    			/* Determine the amount for each person in the entry */
 	    		int newAmount = 0;
 	    		if (this.check.isChecked()){
 	    			int nonRounded = amount / this.selectedIds.size();
@@ -195,25 +205,24 @@ public class NewEntryActivity extends Activity{
 	    			newAmount = amount;
 	    		}
 
-	    		// Update for each user.
+	    		/* Add an entry in the DB for each user */
 	    		SQLiteDatabase db = database.getWritableDatabase();
 	    		for (int i = 0; i < this.selectedIds.size(); i++){
 	    			int id = this.selectedIds.get(i);
 	    			addNewEntry(db, id, newAmount, title, notes);
 	    		}
 
-	    	// Update for one user
+	    	/* Add an entry for one user */
 	    	} else {
-	    		// Add a new entry for that user
 	    		SQLiteDatabase db = database.getWritableDatabase();
 	    		addNewEntry(db, this.selectedIds.get(0), amount, title, notes);
-
-	    	}
+    		}
     	} finally {
     		database.close();
     	}
 	}
 
+    /* Adds an entry in the entry table with the passed arguments */
     private void addNewEntry(SQLiteDatabase db, int id, int amount, String title, String notes){
     	SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd");
     	Date dateType = new Date();
@@ -228,7 +237,7 @@ public class NewEntryActivity extends Activity{
     	db.insertOrThrow(TABLE_NAME_ENTRY, null, values);
     }
 
-    // Check that there all necessary fields are filled.
+    /* Check that all necessary fields have information */
     private ArrayList<String> inputValidation(){
     	ArrayList<String> returnString = new ArrayList<String>();
 
@@ -250,6 +259,7 @@ public class NewEntryActivity extends Activity{
     	return returnString;
    }
 
+    /* Create and display Toast error message */
     private void makeToastError(ArrayList<String> input){
     	String errorMessage = "Please fill in the following fields: ";
     	for (String s: input){
@@ -264,6 +274,7 @@ public class NewEntryActivity extends Activity{
     	t.show();
     }
 
+    /* Toggle the 'Divide' checkbox */
     private void toggleCheckbox(){
     	if (this.check.isEnabled()){
 			this.check.toggle();

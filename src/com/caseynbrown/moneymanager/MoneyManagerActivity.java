@@ -15,35 +15,10 @@ public class MoneyManagerActivity extends Activity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-        // Add click listeners for the buttons
-        // Quick Balance
+        /* View Balances */
         ((Button) findViewById(R.id.balanceView)).setOnClickListener(
         		new Button.OnClickListener() {
         			@Override public void onClick(View view){
-        				System.out.println("clicked quick bal");
-        				Intent balIntent = new Intent(view.getContext(), BalanceViewActivity.class);
-        				balIntent.putExtra("view", true);
-        				startActivity(balIntent);
-        			}
-        		}
-    		);
-
-        // Add New
-        ((Button) findViewById(R.id.addNew)).setOnClickListener(
-        		new Button.OnClickListener() {
-        			@Override public void onClick(View view){
-        				System.out.println("clicked add new");
-        				Intent entryIntent = new Intent(view.getContext(), NewEntryActivity.class);
-        				startActivity(entryIntent);
-    				}
-        		}
-    		);
-
-        // Edit Entry
-        ((Button) findViewById(R.id.editBal)).setOnClickListener(
-        		new Button.OnClickListener() {
-        			@Override public void onClick(View view){
-        				System.out.println("clicked editBal");
         				Intent balIntent = new Intent(view.getContext(), BalanceViewActivity.class);
         				balIntent.putExtra("view", false);
         				startActivity(balIntent);
@@ -51,8 +26,28 @@ public class MoneyManagerActivity extends Activity{
         		}
     		);
 
-        // About
-        ((Button) findViewById(R.id.about)).setOnClickListener(
+        /* Add New Person */
+        ((Button) findViewById(R.id.addNewPerson)).setOnClickListener(
+        		new Button.OnClickListener() {
+        			@Override public void onClick(View view){
+        				Intent addUserIntent = new Intent (view.getContext(), PeopleAddActivity.class);
+        				startActivity(addUserIntent);
+    				}
+        		}
+    		);
+
+        /* Add New Entry */
+        ((Button) findViewById(R.id.addNewEntry)).setOnClickListener(
+        		new Button.OnClickListener() {
+        			@Override public void onClick(View view){
+        				Intent entryIntent = new Intent(view.getContext(), NewEntryActivity.class);
+        				startActivity(entryIntent);
+        			}
+        		}
+    		);
+
+        /* Help section */
+        ((Button) findViewById(R.id.help)).setOnClickListener(
         		new Button.OnClickListener() {
         			@Override public void onClick(View view){
         				System.out.println("clicked about");

@@ -25,14 +25,13 @@
     
     <!--  Title Screen -->
     <string name="title_mainTitle">MoneyManager</string>
-    <string name="title_balanceView">Quick Balances View</string>
-    <string name="title_addNew">Add New Entry</string>
-    <string name="title_editBal">Edit Balances</string>
+    <string name="title_balanceView">View Balances</string>
+    <string name="title_addPerson">Add New Person</string>
+    <string name="title_addEntry">Add New Entry</string>
     <string name="title_help">Help</string>
     
     <!--  View Balances Screen -->
     <string name="balance_mainTitle">Balances</string>
-    <string name="balance_clickTitle">Edit Balances</string>
     <string name="emptyBalances">No Active Balances!</string>
     
     <!--  New Entry Screen -->

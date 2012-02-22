@@ -18,16 +18,19 @@ public class ModalAmount extends Dialog {
 	private boolean negative;
 	private TextView iOwe, theyOwe;
 	private CheckBox iOweCheck, theyOweCheck;
-	private EditText amount;
+	private EditText amountEdit;
 	private ReadyListener readyListener;
-
-	public ModalAmount(Context c, ReadyListener readyListener){
+	private String amount;
+	
+	public ModalAmount(Context c, ReadyListener readyListener, String amount, boolean negative){
 		super(c);
 		this.readyListener = readyListener;
+		this.amount = amount;
+		this.negative = negative;
 	}
 
 	public boolean amountEmpty(){
-		if (this.amount.getText().toString().equals("")){
+		if (this.amountEdit.getText().toString().equals("")){
 			return true;
 		} else {
 			return false;
@@ -35,7 +38,7 @@ public class ModalAmount extends Dialog {
 	}
 
 	public String getAmount(){
-		return this.amount.getText().toString();
+		return this.amountEdit.getText().toString();
 	}
 
 	public boolean getNegative(){
@@ -52,20 +55,31 @@ public class ModalAmount extends Dialog {
 		this.theyOwe = ((TextView) findViewById(R.id.owe_they));
 		this.iOweCheck = ((CheckBox) findViewById(R.id.owe_iCheck));
 		this.theyOweCheck = ((CheckBox) findViewById(R.id.owe_theyCheck));
-		this.amount = ((EditText) findViewById(R.id.owe_amount));
+		this.amountEdit = ((EditText) findViewById(R.id.owe_amount));
 
-		this.amount.setEnabled(false);
-		this.amount.clearFocus();
 
+		/* Persist previous selection if modal revisited */
+		if (! this.amount.equals("")){
+			this.amountEdit.setText(this.amount);
+			if (this.negative){
+				checkNegative();
+			} else {
+				checkCredit();
+			}
+		} else {
+			this.amountEdit.setEnabled(false);
+			this.amountEdit.clearFocus();
+		}
+		
 	    // Set restriction on the amount of decimal digits on the amount text box
-	    this.amount.setFilters(new InputFilter[]{new MoneyValueFilter()});
+	    this.amountEdit.setFilters(new InputFilter[]{new MoneyValueFilter()});
 
 		// Click listeners Owe options
 		this.iOwe.setOnClickListener(
 				new TextView.OnClickListener(){
 					@Override
 					public void onClick(View v) {
-						checkIOwe();
+						checkNegative();
 					}
 				});
 
@@ -73,7 +87,7 @@ public class ModalAmount extends Dialog {
 				new CheckBox.OnClickListener(){
 					@Override
 					public void onClick(View v) {
-						checkIOwe();
+						checkNegative();
 					}
 				});
 
@@ -81,7 +95,7 @@ public class ModalAmount extends Dialog {
 				new TextView.OnClickListener(){
 					@Override
 					public void onClick(View v) {
-						checkTheyOwe();
+						checkCredit();
 					}
 				});
 
@@ -89,27 +103,26 @@ public class ModalAmount extends Dialog {
 				new CheckBox.OnClickListener(){
 					@Override
 					public void onClick(View v) {
-						checkTheyOwe();
+						checkCredit();
 					}
 				});
-
+		
 		Button doneButton = ((Button) findViewById(R.id.owe_done));
 		doneButton.setOnClickListener(new ModalListener());
-
 	}
 
-	protected void checkIOwe(){
+	protected void checkNegative(){
 		this.theyOweCheck.setChecked(false);
 		this.iOweCheck.setChecked(true);
 		this.negative = true;
-		this.amount.setEnabled(true);
+		this.amountEdit.setEnabled(true);
 	}
 
-	protected void checkTheyOwe(){
+	protected void checkCredit(){
 		this.theyOweCheck.setChecked(true);
 		this.iOweCheck.setChecked(false);
 		this.negative = false;
-		this.amount.setEnabled(true);
+		this.amountEdit.setEnabled(true);
 	}
 
 	// Nested Class for dialog
