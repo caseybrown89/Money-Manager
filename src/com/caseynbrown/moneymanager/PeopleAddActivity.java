@@ -1,8 +1,9 @@
 package com.caseynbrown.moneymanager;
 
-import static com.caseynbrown.moneymanager.ConstantsDB.AMOUNT_PEOPLE;
-import static com.caseynbrown.moneymanager.ConstantsDB.NAME_PEOPLE;
-import static com.caseynbrown.moneymanager.ConstantsDB.TABLE_NAME_PEOPLE;
+import static com.caseynbrown.moneymanager.DBConstants.AMOUNT_PEOPLE;
+import static com.caseynbrown.moneymanager.DBConstants.NAME_PEOPLE;
+import static com.caseynbrown.moneymanager.DBConstants.TABLE_NAME_PEOPLE;
+import static com.caseynbrown.moneymanager.ModalAmountConstants.NEW_USER;
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
@@ -19,7 +20,7 @@ public class PeopleAddActivity extends Activity {
 	private DBData db;
 	private EditText nameEdit, amountEdit;
 	private Button doneButton;
-	
+
 	/* Create boolean and string objects to persist amount from modal amount window If these
      * are set, the modal amount window will automatically be filled with these values
      */
@@ -85,7 +86,7 @@ public class PeopleAddActivity extends Activity {
 
 	/* Displays a Modal amount box */
 	public void showModal() {
-		ModalAmount d = new ModalAmount(this, new OnReadyListener(), this.amount, this.negative, 0);
+		ModalAmount d = new ModalAmount(this, new OnReadyListener(), this.amount, this.negative, NEW_USER);
 		d.show();
 	}
 

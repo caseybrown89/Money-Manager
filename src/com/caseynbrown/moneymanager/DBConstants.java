@@ -2,7 +2,7 @@ package com.caseynbrown.moneymanager;
 import android.provider.BaseColumns;
 
 
-public interface ConstantsDB extends BaseColumns {
+public interface DBConstants extends BaseColumns {
 	/* Table names */
 	public static final String TABLE_NAME_PEOPLE = "people";
 	public static final String TABLE_NAME_ENTRY = "entries";

@@ -1,14 +1,14 @@
 package com.caseynbrown.moneymanager;
 
 import static android.provider.BaseColumns._ID;
-import static com.caseynbrown.moneymanager.ConstantsDB.AMOUNT_ENTRY;
-import static com.caseynbrown.moneymanager.ConstantsDB.AMOUNT_PEOPLE;
-import static com.caseynbrown.moneymanager.ConstantsDB.DATE_ENTRY;
-import static com.caseynbrown.moneymanager.ConstantsDB.NAME_PEOPLE;
-import static com.caseynbrown.moneymanager.ConstantsDB.TABLE_NAME_ENTRY;
-import static com.caseynbrown.moneymanager.ConstantsDB.TABLE_NAME_PEOPLE;
-import static com.caseynbrown.moneymanager.ConstantsDB.TITLE_ENTRY;
-import static com.caseynbrown.moneymanager.ConstantsDB.USER_ENTRY;
+import static com.caseynbrown.moneymanager.DBConstants.AMOUNT_ENTRY;
+import static com.caseynbrown.moneymanager.DBConstants.AMOUNT_PEOPLE;
+import static com.caseynbrown.moneymanager.DBConstants.DATE_ENTRY;
+import static com.caseynbrown.moneymanager.DBConstants.NAME_PEOPLE;
+import static com.caseynbrown.moneymanager.DBConstants.TABLE_NAME_ENTRY;
+import static com.caseynbrown.moneymanager.DBConstants.TABLE_NAME_PEOPLE;
+import static com.caseynbrown.moneymanager.DBConstants.TITLE_ENTRY;
+import static com.caseynbrown.moneymanager.DBConstants.USER_ENTRY;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.database.Cursor;

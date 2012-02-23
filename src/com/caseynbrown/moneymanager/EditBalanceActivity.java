@@ -1,15 +1,16 @@
 package com.caseynbrown.moneymanager;
 
 import static android.provider.BaseColumns._ID;
-import static com.caseynbrown.moneymanager.ConstantsDB.AMOUNT_ENTRY;
-import static com.caseynbrown.moneymanager.ConstantsDB.AMOUNT_PEOPLE;
-import static com.caseynbrown.moneymanager.ConstantsDB.DATE_ENTRY;
-import static com.caseynbrown.moneymanager.ConstantsDB.NAME_PEOPLE;
-import static com.caseynbrown.moneymanager.ConstantsDB.NOTES_ENTRY;
-import static com.caseynbrown.moneymanager.ConstantsDB.TABLE_NAME_ENTRY;
-import static com.caseynbrown.moneymanager.ConstantsDB.TABLE_NAME_PEOPLE;
-import static com.caseynbrown.moneymanager.ConstantsDB.TITLE_ENTRY;
-import static com.caseynbrown.moneymanager.ConstantsDB.USER_ENTRY;
+import static com.caseynbrown.moneymanager.DBConstants.AMOUNT_ENTRY;
+import static com.caseynbrown.moneymanager.DBConstants.AMOUNT_PEOPLE;
+import static com.caseynbrown.moneymanager.DBConstants.DATE_ENTRY;
+import static com.caseynbrown.moneymanager.DBConstants.NAME_PEOPLE;
+import static com.caseynbrown.moneymanager.DBConstants.NOTES_ENTRY;
+import static com.caseynbrown.moneymanager.DBConstants.TABLE_NAME_ENTRY;
+import static com.caseynbrown.moneymanager.DBConstants.TITLE_ENTRY;
+import static com.caseynbrown.moneymanager.DBConstants.USER_ENTRY;
+import static com.caseynbrown.moneymanager.ModalAmountConstants.UPDATE_BALANCE_NEGATIVE;
+import static com.caseynbrown.moneymanager.ModalAmountConstants.UPDATE_BALANCE_POSITIVE;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -18,7 +19,6 @@ import java.util.Date;
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -30,7 +30,7 @@ import android.widget.Toast;
 
 public class EditBalanceActivity extends Activity{
 
-	/* DB related */ 
+	/* DB related */
 	private DBData database;
 	private static String[] FROM = {_ID, NAME_PEOPLE, AMOUNT_PEOPLE};
 	private static String ORDER_BY = NAME_PEOPLE + " DESC";
@@ -42,7 +42,7 @@ public class EditBalanceActivity extends Activity{
 	protected static final int OWE_CREATE = 1;
 	EditText whyBox, notesBox, amountBox;
 	String plusminus;
-	
+
 	/* Create boolean and string objects to persist amount from modal amount window If these
      * are set, the modal amount window will automatically be filled with these values
      */
@@ -106,17 +106,17 @@ public class EditBalanceActivity extends Activity{
 
 	/* Displays the modal amount pop up */
 	public void showModal(){
-		
+
 		/* Pass different string code whether the current balance with the person is negative
 		 * or positive.
 		 */
 		int modalStrings;
 		if (this.negative){
-			modalStrings = 1;
+			modalStrings = UPDATE_BALANCE_NEGATIVE;
 		} else {
-			modalStrings = 2;
+			modalStrings = UPDATE_BALANCE_POSITIVE;
 		}
-		
+
 		ModalAmount d = new ModalAmount(this, new OnReadyListener(), this.amountString, this.negative, modalStrings);
 		d.show();
 	}

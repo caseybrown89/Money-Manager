@@ -1,14 +1,15 @@
 package com.caseynbrown.moneymanager;
 
 import static android.provider.BaseColumns._ID;
-import static com.caseynbrown.moneymanager.ConstantsDB.AMOUNT_ENTRY;
-import static com.caseynbrown.moneymanager.ConstantsDB.AMOUNT_PEOPLE;
-import static com.caseynbrown.moneymanager.ConstantsDB.DATE_ENTRY;
-import static com.caseynbrown.moneymanager.ConstantsDB.NAME_PEOPLE;
-import static com.caseynbrown.moneymanager.ConstantsDB.NOTES_ENTRY;
-import static com.caseynbrown.moneymanager.ConstantsDB.TABLE_NAME_ENTRY;
-import static com.caseynbrown.moneymanager.ConstantsDB.TITLE_ENTRY;
-import static com.caseynbrown.moneymanager.ConstantsDB.USER_ENTRY;
+import static com.caseynbrown.moneymanager.DBConstants.AMOUNT_ENTRY;
+import static com.caseynbrown.moneymanager.DBConstants.AMOUNT_PEOPLE;
+import static com.caseynbrown.moneymanager.DBConstants.DATE_ENTRY;
+import static com.caseynbrown.moneymanager.DBConstants.NAME_PEOPLE;
+import static com.caseynbrown.moneymanager.DBConstants.NOTES_ENTRY;
+import static com.caseynbrown.moneymanager.DBConstants.TABLE_NAME_ENTRY;
+import static com.caseynbrown.moneymanager.DBConstants.TITLE_ENTRY;
+import static com.caseynbrown.moneymanager.DBConstants.USER_ENTRY;
+import static com.caseynbrown.moneymanager.ModalAmountConstants.NEW_ENTRY;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -132,7 +133,7 @@ public class NewEntryActivity extends Activity {
 	/* Display the modal amount pop up */
 	public void showModal() {
 		ModalAmount d = new ModalAmount(this, new OnReadyListener(),
-				this.amount, negative, 0);
+				this.amount, negative, NEW_ENTRY);
 		d.show();
 	}
 

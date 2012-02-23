@@ -1,9 +1,9 @@
 package com.caseynbrown.moneymanager;
 
 import static android.provider.BaseColumns._ID;
-import static com.caseynbrown.moneymanager.ConstantsDB.AMOUNT_PEOPLE;
-import static com.caseynbrown.moneymanager.ConstantsDB.NAME_PEOPLE;
-import static com.caseynbrown.moneymanager.ConstantsDB.TABLE_NAME_PEOPLE;
+import static com.caseynbrown.moneymanager.DBConstants.AMOUNT_PEOPLE;
+import static com.caseynbrown.moneymanager.DBConstants.NAME_PEOPLE;
+import static com.caseynbrown.moneymanager.DBConstants.TABLE_NAME_PEOPLE;
 
 import java.util.ArrayList;
 

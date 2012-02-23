@@ -1,7 +1,9 @@
 package com.caseynbrown.moneymanager;
 
-import java.util.ArrayList;
-
+import static com.caseynbrown.moneymanager.ModalAmountConstants.NEW_ENTRY;
+import static com.caseynbrown.moneymanager.ModalAmountConstants.NEW_USER;
+import static com.caseynbrown.moneymanager.ModalAmountConstants.UPDATE_BALANCE_NEGATIVE;
+import static com.caseynbrown.moneymanager.ModalAmountConstants.UPDATE_BALANCE_POSITIVE;
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
@@ -28,22 +30,19 @@ public class ModalAmount extends Dialog {
 	 */
 	private boolean negative;
 	private String amount;
-	
+
 	/* Form inputs */
 	private TextView neg, pos;
 	private CheckBox iOweCheck, theyOweCheck;
 	private EditText amountEdit;
-	
+
 	/* Returns the negative and amount variables to the Activity from which this was called */
 	private ReadyListener readyListener;
-	
+
 	/* Determines which set of strings should be displayed next to the check boxes */
 	int displayStrings;
-	private static final int NEW_ENTRY = 0;
-	private static final int UPDATE_BALANCE_NEGATIVE = 1;
-	private static final int UPDATE_BALANCE_POSITIVE = 2;
-	private static final int NEW_USER = 3;
-	
+
+
 	public ModalAmount(Context c, ReadyListener readyListener, String amount, boolean negative, int displayStrings){
 		super(c);
 		this.readyListener = readyListener;
@@ -82,7 +81,7 @@ public class ModalAmount extends Dialog {
 		this.iOweCheck = ((CheckBox) findViewById(R.id.amountmodal_negativeCheck));
 		this.theyOweCheck = ((CheckBox) findViewById(R.id.amountmodal_positiveCheck));
 		this.amountEdit = ((EditText) findViewById(R.id.amountmodal_amount));
-		
+
 		/* Set the text to be displayed next to the check boxes */
 		switch (this.displayStrings) {
 			case (NEW_ENTRY): {
@@ -118,7 +117,7 @@ public class ModalAmount extends Dialog {
 			this.amountEdit.setEnabled(false);
 			this.amountEdit.clearFocus();
 		}
-		
+
 	    /* Set restriction on the amount of decimal digits on the amount text box */
 	    this.amountEdit.setFilters(new InputFilter[]{new MoneyValueFilter()});
 
@@ -154,7 +153,7 @@ public class ModalAmount extends Dialog {
 						checkCredit();
 					}
 				});
-		
+
 		Button doneButton = ((Button) findViewById(R.id.amountmodal_done));
 		doneButton.setOnClickListener(new ModalListener());
 	}
@@ -191,10 +190,10 @@ public class ModalAmount extends Dialog {
 			}
 		}
 	}
-	
+
 	/* Create and display Toast error message */
 	public void displayErrorToast(String msg){
-		
+
 		Toast t = new Toast(this.getContext());
     	String errorMessage = "Please provide "+msg+"";
     	TextView error = new TextView(this.getContext());
@@ -205,6 +204,6 @@ public class ModalAmount extends Dialog {
     	t.setView(error);
     	t.setDuration(2);
     	t.show();
-    	
+
 	}
 }
