@@ -65,8 +65,10 @@ public class EditBalanceActivity extends Activity{
         TextView balText = ((TextView) findViewById(R.id.editBal_amt));
         balText.setText(HelperMethods.intToDollar(this.amount));
         if (this.amount < 0){
+        	this.negative = true;
         	balText.setTextColor(Color.RED);
         } else {
+        	this.negative = false;
         	balText.setTextColor(Color.parseColor("#00A300"));
         }
 
@@ -102,8 +104,20 @@ public class EditBalanceActivity extends Activity{
         		});
 	}
 
+	/* Displays the modal amount pop up */
 	public void showModal(){
-		ModalAmount d = new ModalAmount(this, new OnReadyListener(), this.amountString, this.negative);
+		
+		/* Pass different string code whether the current balance with the person is negative
+		 * or positive.
+		 */
+		int modalStrings;
+		if (this.negative){
+			modalStrings = 1;
+		} else {
+			modalStrings = 2;
+		}
+		
+		ModalAmount d = new ModalAmount(this, new OnReadyListener(), this.amountString, this.negative, modalStrings);
 		d.show();
 	}
 

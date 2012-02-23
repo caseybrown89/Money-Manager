@@ -85,7 +85,7 @@ public class PeopleAddActivity extends Activity {
 
 	/* Displays a Modal amount box */
 	public void showModal() {
-		ModalAmount d = new ModalAmount(this, new OnReadyListener(), this.amount, this.negative);
+		ModalAmount d = new ModalAmount(this, new OnReadyListener(), this.amount, this.negative, 0);
 		d.show();
 	}
 

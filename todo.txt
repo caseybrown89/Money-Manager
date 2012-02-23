@@ -1,8 +1,5 @@
 In no particular order:
 
-2) Check updating in DB for multiple users on NewEntryActivity
+2) Check updating in DB for multiple users on NewEntryActivity = currently rounding instead of exact amount
 7) Change 'About' to 'Help' and explain the red and green balance conventions
 8) Add option to include yourself when dividing balance, evenly divide balance with remainders by using mod
-9) Display error message when invalid amount provided in modal amount
-11) Change order of display of entries on Individual balance view
-12) Modal amount should display dynamic strings depending on what activity it originated from

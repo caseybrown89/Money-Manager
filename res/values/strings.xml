@@ -7,7 +7,7 @@
     <string name="activity_balance">Balance View</string>
     <string name="activity_newEntry">New Entry</string>
     <string name="activity_peopleList">People List</string>
-    <string name="activity_owe">Owe</string>
+    <string name="activity_amountModal">Owe</string>
     <string name="activity_addPeople">People Add</string>
     <string name="activity_indivBal">Individual Balance</string>
     <string name="activity_editBalance">Edit Balance</string>
@@ -48,11 +48,17 @@
     <string name="peopleList_addNew">Add New Person</string>
     <string name="peopleList_done">Done</string>
 
-    <!-- Owe Screen -->
-    <string name="owe_Title">Who Owes?</string>
-    <string name="owe_they">I Lent</string>
-    <string name="owe_i">I Borrowed</string>
-
+    <!-- Amount Modal Screen -->
+    <string name="amountmodal_Title">Enter Amount:</string>
+    <string name="amountmodal_newEntryPos">I Lent</string>
+    <string name="amountmodal_newEntryNeg">I Borrowed</string>
+    <string name="amountmodal_newUserPos">I Lent</string>
+    <string name="amountmodal_newUserNeg">I Borrowed</string>
+    <string name="amountmodal_updateNegBalNeg">Increase Debt</string>
+    <string name="amountmodal_updateNegBalPos">Decrease Debt</string>
+    <string name="amountmodal_updatePosBalNeg">Decrease Credit</string>
+    <string name="amountmodal_updatePosBalPos">Increase Credit</string>
+    
     <!-- People Add Screen -->
     <string name="peopleAdd_Title">Add Person</string>
     <string name="peopleAdd_name">Name:</string>

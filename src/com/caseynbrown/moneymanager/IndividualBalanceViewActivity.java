@@ -111,7 +111,7 @@ public class IndividualBalanceViewActivity extends ListActivity {
         // and re-querying the cursor when needed.
         SQLiteDatabase db = database.getReadableDatabase();
         String query = "SELECT "+ _ID +", "+ DATE_ENTRY +", "+TITLE_ENTRY+", "+AMOUNT_ENTRY+" FROM "+TABLE_NAME_ENTRY+
-        	" WHERE "+USER_ENTRY+"="+this.userId;
+        	" WHERE "+USER_ENTRY+"="+this.userId+" ORDER BY "+_ID+" DESC";
         Cursor cursor = db.rawQuery(query, null);
         startManagingCursor(cursor);
 

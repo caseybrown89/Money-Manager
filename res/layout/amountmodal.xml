@@ -6,27 +6,26 @@
     android:orientation="vertical">
 	
     <LinearLayout
-    	android:id="@+id/owe_linearLayout1"
+    	android:id="@+id/amountmodal_linearLayout1"
     	android:layout_height="wrap_content"
     	android:layout_width="wrap_content"
     	android:layout_gravity="center_horizontal"
     	android:orientation="horizontal">
 	    
 	    <TextView
-	        android:id="@+id/owe_i"
+	        android:id="@+id/amountmodal_negative"
 	        android:layout_height="wrap_content"
 	    	android:layout_width="wrap_content"
 			android:textColor="#FFFFFF"
 			android:textSize="18sp"
-	
-			android:text="@string/owe_i"
+			android:text="@string/amountmodal_newEntryNeg"
 			android:padding="5sp"/>
 	
 	    <CheckBox
-	        android:id="@+id/owe_iCheck"
+	        android:id="@+id/amountmodal_negativeCheck"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:layout_alignBottom="@+id/owe_i"/>
+	        android:layout_alignBottom="@+id/amountmodal_i"/>
     </LinearLayout>
 
     <LinearLayout
@@ -36,19 +35,19 @@
     	android:layout_gravity="center_horizontal"
     	android:orientation="horizontal">
 	    <TextView
-	        android:id="@+id/owe_they"
+	        android:id="@+id/amountmodal_positive"
 	        android:layout_height="wrap_content"
 	    	android:layout_width="wrap_content"
 	        android:padding="5sp"
-	        android:text="@string/owe_they"
+	        android:text="@string/amountmodal_newEntryPos"
 	        android:textColor="#FFFFFF"
 	        android:textSize="18sp"/>
 	
 	    <CheckBox
-	        android:id="@+id/owe_theyCheck"
+	        android:id="@+id/amountmodal_positiveCheck"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:layout_above="@+id/owe_amount"/>
+	        android:layout_above="@+id/amountmodal_amount"/>
     </LinearLayout>
 
     <LinearLayout
@@ -58,7 +57,7 @@
     	android:layout_gravity="center_horizontal"
     	android:orientation="horizontal">
 	    <TextView
-	        android:id="@+id/owe_amountText"
+	        android:id="@+id/amountmodal_amountText"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:text="@string/entry_Amount"
@@ -68,17 +67,17 @@
 	        android:paddingRight="10sp" />
 	
 	    <EditText
-	        android:id="@+id/owe_amount"
+	        android:id="@+id/amountmodal_amount"
 	        android:layout_width="80dp"
 	        android:layout_height="wrap_content"
 	        android:paddingRight="10sp"
 	        android:numeric="integer|decimal"/>
 	</LinearLayout>
     <Button
-        android:id="@+id/owe_done"
+        android:id="@+id/amountmodal_done"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/owe_amount"
+        android:layout_below="@+id/amountmodal_amount"
         android:layout_gravity="center_horizontal"
         android:text="@string/done" />
 

@@ -31,20 +31,22 @@ import android.widget.Toast;
 /* Activity for entering new entries into DB.  Used on 'New Entry' and 'Update Balance
  * screens
  */
-public class NewEntryActivity extends Activity{
+public class NewEntryActivity extends Activity {
 
 	/* DB related */
 	private DBData database;
-	private static String[] FROM = {_ID, NAME_PEOPLE, AMOUNT_PEOPLE};
+	private static String[] FROM = { _ID, NAME_PEOPLE, AMOUNT_PEOPLE };
 	private static String ORDER_BY = NAME_PEOPLE + " DESC";
-	private static int[] TO = {0, R.id.rowName, 0 };
+	private static int[] TO = { 0, R.id.rowName, 0 };
 
-	/* Create boolean and string objects to persist amount from modal amount window If these
-     * are set, the modal amount window will automatically be filled with these values
-     */
-    boolean negative = false;
-    String amount = "";
-	
+	/*
+	 * Create boolean and string objects to persist amount from modal amount
+	 * window If these are set, the modal amount window will automatically be
+	 * filled with these values
+	 */
+	boolean negative = false;
+	String amount = "";
+
 	/* An entry can be created for multiple people */
 	int numIds = 0;
 	ArrayList<Integer> selectedIds;
@@ -57,84 +59,90 @@ public class NewEntryActivity extends Activity{
 	CheckBox check;
 
 	@Override
-    public void onCreate(Bundle savedInstanceState) {
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.newentry);
-        database = new DBData(this);
-        
-        /* Do not highlight any form fields */
-        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
-        
-        /* Get the interactive elements from screen. */
-        this.whoBox = ((TextView) findViewById(R.id.entry_whoBox));
-        this.whereBox = ((EditText) findViewById(R.id.entry_whereBox));
-        this.amountBox = ((EditText) findViewById(R.id.entry_amountBox));
-        this.notesBox = ((EditText) findViewById(R.id.entry_notesBox));
-        this.check = ((CheckBox) findViewById(R.id.entry_divideCheckBox));
+		database = new DBData(this);
 
-        /* Add listeners for fields/buttons */
-        /* Bring up list to select people for the entry */
-        this.whoBox.setOnClickListener(
-        		new EditText.OnClickListener(){
-        			@Override public void onClick(View view){
-        				Intent listIntent = new Intent(view.getContext(), PeopleListActivity.class);
-        				startActivityForResult(listIntent, PEOPLE_LIST_CREATE);
-        			}
-        		});
+		/* Do not highlight any form fields */
+		getWindow().setSoftInputMode(
+				WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
-        /* Bring up a modal pop up to enter amount */
-        this.amountBox.setOnClickListener(
-        		new EditText.OnClickListener(){
-        			@Override public void onClick(View view){
-        				showModal();
-        			}
-        		});
+		/* Get the interactive elements from screen. */
+		this.whoBox = ((TextView) findViewById(R.id.entry_whoBox));
+		this.whereBox = ((EditText) findViewById(R.id.entry_whereBox));
+		this.amountBox = ((EditText) findViewById(R.id.entry_amountBox));
+		this.notesBox = ((EditText) findViewById(R.id.entry_notesBox));
+		this.check = ((CheckBox) findViewById(R.id.entry_divideCheckBox));
 
-        /* Submit the entry */
-        ((Button) findViewById(R.id.submitButton)).setOnClickListener(
-        		new Button.OnClickListener() {
-        			@Override
-        			public void onClick(View view){
-        				/* Input validation */
-        				ArrayList<String> invalidFields = inputValidation();
-        				if (invalidFields.size() > 0){
-        					/* Toast error */
-        					makeToastError(invalidFields);
-        				} else {
-        					try {
-        						updateSQL();
-        					} catch (Exception e){
-        						e.printStackTrace();
-        					}
-        					finish();
-        				}
-    				}
-        		});
+		/* Add listeners for fields/buttons */
+		/* Bring up list to select people for the entry */
+		this.whoBox.setOnClickListener(new EditText.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				Intent listIntent = new Intent(view.getContext(),
+						PeopleListActivity.class);
+				startActivityForResult(listIntent, PEOPLE_LIST_CREATE);
+			}
+		});
 
-        /* If checked, divide the total amount entered among all people for entry.  Otherwise,
-         * give the amount provided to each person in the entry.
-         */
-        ((TextView) findViewById(R.id.entry_divideText)).setOnClickListener(
-        		new TextView.OnClickListener() {
-        			@Override
-        			public void onClick(View view){
-        				toggleCheckbox();
-        			}
-        		});
+		/* Bring up a modal pop up to enter amount */
+		this.amountBox.setOnClickListener(new EditText.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				showModal();
+			}
+		});
+
+		/* Submit the entry */
+		((Button) findViewById(R.id.submitButton))
+				.setOnClickListener(new Button.OnClickListener() {
+					@Override
+					public void onClick(View view) {
+						/* Input validation */
+						ArrayList<String> invalidFields = inputValidation();
+						if (invalidFields.size() > 0) {
+							/* Toast error */
+							makeToastError(invalidFields);
+						} else {
+							try {
+								updateSQL();
+							} catch (Exception e) {
+								e.printStackTrace();
+							}
+							finish();
+						}
+					}
+				});
+
+		/*
+		 * If checked, divide the total amount entered among all people for
+		 * entry. Otherwise, give the amount provided to each person in the
+		 * entry.
+		 */
+		((TextView) findViewById(R.id.entry_divideText))
+				.setOnClickListener(new TextView.OnClickListener() {
+					@Override
+					public void onClick(View view) {
+						toggleCheckbox();
+					}
+				});
 	}
 
 	/* Display the modal amount pop up */
-	public void showModal(){
-		ModalAmount d = new ModalAmount(this, new OnReadyListener(), this.amount, negative);
+	public void showModal() {
+		ModalAmount d = new ModalAmount(this, new OnReadyListener(),
+				this.amount, negative, 0);
 		d.show();
 	}
 
 	/* Get the amount back from the Modal Listener */
-	private class OnReadyListener implements ModalAmount.ReadyListener{
+	private class OnReadyListener implements ModalAmount.ReadyListener {
 
 		@Override
 		public void ready(boolean negativeReturned, String amountReturned) {
-			HelperMethods.updateAmountBox(amountBox, negativeReturned, amountReturned);
+			HelperMethods.updateAmountBox(amountBox, negativeReturned,
+					amountReturned);
 			amount = amountReturned;
 			negative = negativeReturned;
 		}
@@ -145,139 +153,144 @@ public class NewEntryActivity extends Activity{
 		super.onResume();
 
 		CheckBox check = ((CheckBox) findViewById(R.id.entry_divideCheckBox));
-		if (this.numIds > 0){
+		if (this.numIds > 0) {
 
 			/* Set the Who button to display all users */
-	        String displayNames = "";
-	        for (int i = 0; i < this.selectedNames.size(); i++){
-	        	String s = this.selectedNames.get(i);
-	        	if (i + 1 == this.selectedNames.size()){
-	        		displayNames = displayNames + s;
-	        	} else {
-	        		displayNames = displayNames + s +"\n";
-	        	}
-	        }
-        	this.whoBox.setText(displayNames);
+			String displayNames = "";
+			for (int i = 0; i < this.selectedNames.size(); i++) {
+				String s = this.selectedNames.get(i);
+				if (i + 1 == this.selectedNames.size()) {
+					displayNames = displayNames + s;
+				} else {
+					displayNames = displayNames + s + "\n";
+				}
+			}
+			this.whoBox.setText(displayNames);
 
-	        /* Enable the 'Divide' checkbox */
-        	if (this.numIds > 1){
-	        	check.setEnabled(true);
-        	}
-        } else {
-        	this.whoBox.setText("");
-        	check.setEnabled(false);
-        }
+			/* Enable the 'Divide' checkbox */
+			if (this.numIds > 1) {
+				check.setEnabled(true);
+			}
+		} else {
+			this.whoBox.setText("");
+			check.setEnabled(false);
+		}
 	}
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data){
-    	super.onActivityResult(requestCode, resultCode, data);
-    	switch(requestCode){
-    	/* Set the id and name arrays to the people selected on the PeopleListActivity */	
-    	case(PEOPLE_LIST_CREATE) : {
-    			if (resultCode == Activity.RESULT_OK){
-    				// Update instance variables
-    				this.selectedIds = data.getIntegerArrayListExtra("ids");
-    				this.selectedNames = data.getStringArrayListExtra("names");
-    				numIds = selectedIds.size();
-    			}
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		switch (requestCode) {
+		/*
+		 * Set the id and name arrays to the people selected on the
+		 * PeopleListActivity
+		 */
+		case (PEOPLE_LIST_CREATE): {
+			if (resultCode == Activity.RESULT_OK) {
+				// Update instance variables
+				this.selectedIds = data.getIntegerArrayListExtra("ids");
+				this.selectedNames = data.getStringArrayListExtra("names");
+				numIds = selectedIds.size();
 			}
 		}
-    }
-
-    private void updateSQL(){
-
-    	/* Get data from form fields */
-    	int amount = HelperMethods.dollarToInt(this.amountBox.getText().toString());
-    	String title = this.whereBox.getText().toString();
-    	String notes = this.notesBox.getText().toString();
-
-    	try {
-    		/* SQL update for multiple people */
-    		if (this.selectedIds.size() > 1){
-
-    			/* Determine the amount for each person in the entry */
-	    		int newAmount = 0;
-	    		if (this.check.isChecked()){
-	    			int nonRounded = amount / this.selectedIds.size();
-	    			newAmount = nonRounded;
-	    		} else {
-	    			newAmount = amount;
-	    		}
-
-	    		/* Add an entry in the DB for each user */
-	    		SQLiteDatabase db = database.getWritableDatabase();
-	    		for (int i = 0; i < this.selectedIds.size(); i++){
-	    			int id = this.selectedIds.get(i);
-	    			addNewEntry(db, id, newAmount, title, notes);
-	    		}
-
-	    	/* Add an entry for one user */
-	    	} else {
-	    		SQLiteDatabase db = database.getWritableDatabase();
-	    		addNewEntry(db, this.selectedIds.get(0), amount, title, notes);
-    		}
-    	} finally {
-    		database.close();
-    	}
+		}
 	}
 
-    /* Adds an entry in the entry table with the passed arguments */
-    private void addNewEntry(SQLiteDatabase db, int id, int amount, String title, String notes){
-    	SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd");
-    	Date dateType = new Date();
-    	String date = dateFormat.format(dateType);
+	private void updateSQL() {
+
+		/* Get data from form fields */
+		int amount = HelperMethods.dollarToInt(this.amountBox.getText()
+				.toString());
+		String title = this.whereBox.getText().toString();
+		String notes = this.notesBox.getText().toString();
+
+		try {
+			/* SQL update for multiple people */
+			if (this.selectedIds.size() > 1) {
+
+				/* Determine the amount for each person in the entry */
+				int newAmount = 0;
+				if (this.check.isChecked()) {
+					int nonRounded = amount / this.selectedIds.size();
+					newAmount = nonRounded;
+				} else {
+					newAmount = amount;
+				}
+
+				/* Add an entry in the DB for each user */
+				SQLiteDatabase db = database.getWritableDatabase();
+				for (int i = 0; i < this.selectedIds.size(); i++) {
+					int id = this.selectedIds.get(i);
+					addNewEntry(db, id, newAmount, title, notes);
+				}
+
+				/* Add an entry for one user */
+			} else {
+				SQLiteDatabase db = database.getWritableDatabase();
+				addNewEntry(db, this.selectedIds.get(0), amount, title, notes);
+			}
+		} finally {
+			database.close();
+		}
+	}
+
+	/* Adds an entry in the entry table with the passed arguments */
+	private void addNewEntry(SQLiteDatabase db, int id, int amount,
+			String title, String notes) {
+		SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd");
+		Date dateType = new Date();
+		String date = dateFormat.format(dateType);
 
 		ContentValues values = new ContentValues();
-    	values.put(USER_ENTRY, id);
-    	values.put(DATE_ENTRY, date);
-    	values.put(TITLE_ENTRY, title);
-    	values.put(AMOUNT_ENTRY, amount);
-    	values.put(NOTES_ENTRY, notes);
-    	db.insertOrThrow(TABLE_NAME_ENTRY, null, values);
-    }
+		values.put(USER_ENTRY, id);
+		values.put(DATE_ENTRY, date);
+		values.put(TITLE_ENTRY, title);
+		values.put(AMOUNT_ENTRY, amount);
+		values.put(NOTES_ENTRY, notes);
+		db.insertOrThrow(TABLE_NAME_ENTRY, null, values);
+	}
 
-    /* Check that all necessary fields have information */
-    private ArrayList<String> inputValidation(){
-    	ArrayList<String> returnString = new ArrayList<String>();
+	/* Check that all necessary fields have information */
+	private ArrayList<String> inputValidation() {
+		ArrayList<String> returnString = new ArrayList<String>();
 
-    	String whoString = this.whoBox.getText().toString();
-    	if (whoString.equals("") || whoString == null){
-    		returnString.add("Who");
-    	}
-
-    	String whereString = this.whereBox.getText().toString();
-    	if (whereString.equals("") || whereString == null){
-    		returnString.add("Where");
-    	}
-
-    	String amountString = this.amountBox.getText().toString();
-    	if (amountString.equals("") || amountString == null){
-    		returnString.add("Amount");
+		String whoString = this.whoBox.getText().toString();
+		if (whoString.equals("") || whoString == null) {
+			returnString.add("Who");
 		}
 
-    	return returnString;
-   }
+		String whereString = this.whereBox.getText().toString();
+		if (whereString.equals("") || whereString == null) {
+			returnString.add("Where");
+		}
 
-    /* Create and display Toast error message */
-    private void makeToastError(ArrayList<String> input){
-    	String errorMessage = "Please fill in the following fields: ";
-    	for (String s: input){
-    		errorMessage = errorMessage + s+" ";
-    	}
-    	Toast t = new Toast(this);
-    	TextView error = new TextView(this);
-    	error.setText(errorMessage);
-    	error.setTextColor(Color.WHITE);
-    	error.setBackgroundColor(Color.BLACK);
-    	t.setView(error);
-    	t.show();
-    }
+		String amountString = this.amountBox.getText().toString();
+		if (amountString.equals("") || amountString == null) {
+			returnString.add("Amount");
+		}
 
-    /* Toggle the 'Divide' checkbox */
-    private void toggleCheckbox(){
-    	if (this.check.isEnabled()){
+		return returnString;
+	}
+
+	/* Create and display Toast error message */
+	private void makeToastError(ArrayList<String> input) {
+		String errorMessage = "Please fill in the following fields: ";
+		for (String s : input) {
+			errorMessage = errorMessage + s + " ";
+		}
+		Toast t = new Toast(this);
+		TextView error = new TextView(this);
+		error.setText(errorMessage);
+		error.setTextColor(Color.WHITE);
+		error.setBackgroundColor(Color.BLACK);
+		t.setView(error);
+		t.show();
+	}
+
+	/* Toggle the 'Divide' checkbox */
+	private void toggleCheckbox() {
+		if (this.check.isEnabled()) {
 			this.check.toggle();
 		}
-    }
+	}
 }
