@@ -157,16 +157,16 @@ public class NewEntryActivity extends Activity {
 		if (this.numIds > 0) {
 
 			/* Set the Who button to display all users */
-			String displayNames = "";
+			StringBuilder displayNames = new StringBuilder();
 			for (int i = 0; i < this.selectedNames.size(); i++) {
 				String s = this.selectedNames.get(i);
 				if (i + 1 == this.selectedNames.size()) {
-					displayNames = displayNames + s;
+					displayNames.append(s);
 				} else {
-					displayNames = displayNames + s + "\n";
+					displayNames = displayNames.append(s + "\n");
 				}
 			}
-			this.whoBox.setText(displayNames);
+			this.whoBox.setText(displayNames.toString());
 
 			/* Enable the 'Divide' checkbox */
 			if (this.numIds > 1) {
