@@ -63,6 +63,7 @@
     <string name="peopleAdd_Title">Add Person</string>
     <string name="peopleAdd_name">Name:</string>
     <string name="peopleAdd_bal">Existing Balance:</string>
+    <string name="peopleAdd_initial">Initial Balance:</string>
 
     <!-- View Balance Screen -->
     <string name="viewBal_bal">Balance:</string>

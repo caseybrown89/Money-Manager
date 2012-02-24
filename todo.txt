@@ -3,3 +3,4 @@ In no particular order:
 2) Check updating in DB for multiple users on NewEntryActivity = currently rounding instead of exact amount
 7) Change 'About' to 'Help' and explain the red and green balance conventions
 8) Add option to include yourself when dividing balance, evenly divide balance with remainders by using mod
+13) Throw exception from DB if name of Person is already taken on new entry, handle exception gracefully

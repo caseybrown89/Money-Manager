@@ -4,9 +4,24 @@ import static com.caseynbrown.moneymanager.DBConstants.AMOUNT_PEOPLE;
 import static com.caseynbrown.moneymanager.DBConstants.NAME_PEOPLE;
 import static com.caseynbrown.moneymanager.DBConstants.TABLE_NAME_PEOPLE;
 import static com.caseynbrown.moneymanager.ModalAmountConstants.NEW_USER;
+import static com.caseynbrown.moneymanager.DBConstants.AMOUNT_ENTRY;
+import static com.caseynbrown.moneymanager.DBConstants.AMOUNT_PEOPLE;
+import static com.caseynbrown.moneymanager.DBConstants.NAME_PEOPLE;
+import static com.caseynbrown.moneymanager.DBConstants.TABLE_NAME_PEOPLE;
+import static com.caseynbrown.moneymanager.DBConstants.DATE_ENTRY;
+import static com.caseynbrown.moneymanager.DBConstants.NAME_PEOPLE;
+import static com.caseynbrown.moneymanager.DBConstants.NOTES_ENTRY;
+import static com.caseynbrown.moneymanager.DBConstants.TABLE_NAME_ENTRY;
+import static com.caseynbrown.moneymanager.DBConstants.TITLE_ENTRY;
+import static com.caseynbrown.moneymanager.DBConstants.USER_ENTRY;
+import static android.provider.BaseColumns._ID;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -59,7 +74,7 @@ public class PeopleAddActivity extends Activity {
 						newAmount = HelperMethods.dollarToInt(amountVal);
 					}
 
-					addUser(nameEdit.getText().toString(), newAmount);
+					addUserEntry(nameEdit.getText().toString(), newAmount);
 					Intent returnIntent = new Intent();
 					setResult(Activity.RESULT_OK, returnIntent);
 					finish();
@@ -101,13 +116,39 @@ public class PeopleAddActivity extends Activity {
 		}
 	}
 
-	/* Add the new user to the DB */
-	private void addUser(String name, int amount) {
+	/* Add the new person to the DB and add an entry of the initial amount if provided*/
+	private void addUserEntry(String name, int amount) {
 		SQLiteDatabase writable = db.getWritableDatabase();
-		ContentValues values = new ContentValues();
-		values.put(NAME_PEOPLE, name);
-		values.put(AMOUNT_PEOPLE, amount);
-		writable.insertOrThrow(TABLE_NAME_PEOPLE, null, values);
+		ContentValues personEntry = new ContentValues();
+		personEntry.put(NAME_PEOPLE, name);
+		personEntry.put(AMOUNT_PEOPLE, 0); // Set amount to 0 here, will add below in entry
+		writable.insertOrThrow(TABLE_NAME_PEOPLE, null, personEntry);
+		
+		if (amount != 0){
+			/* Get the ID assigned to the new person just added */
+			String query = "SELECT "+_ID+" FROM "+TABLE_NAME_PEOPLE+" WHERE" +
+					" "+NAME_PEOPLE+" = '"+name+"';";
+			Cursor c = writable.rawQuery(query, null);
+			int id = 0;
+			while (c.moveToNext()){
+				id = c.getInt(0);
+			}
+						
+			/* Add a new entry for the initial balance from the person just added to the DB */ 
+			personEntry.clear();
+			SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd");
+			Date dateType = new Date();
+			String date = dateFormat.format(dateType);			
+
+			/* Will need to get the ID of the user just entered */
+			personEntry.put(USER_ENTRY, id);
+			personEntry.put(DATE_ENTRY, date);
+			personEntry.put(TITLE_ENTRY, getString(R.string.peopleAdd_initial));
+			personEntry.put(AMOUNT_ENTRY, amount);
+			personEntry.put(NOTES_ENTRY, "");
+			writable.insertOrThrow(TABLE_NAME_ENTRY, null, personEntry);
+		}
+		writable.close();
 	}
 
 	/* Check if the name input box is empty */

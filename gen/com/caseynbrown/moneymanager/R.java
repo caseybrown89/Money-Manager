@@ -117,17 +117,17 @@ public final class R {
         /**  Application Defaults 
          */
         public static final int defaultTextTitleSize=0x7f040009;
-        public static final int del_no=0x7f040031;
+        public static final int del_no=0x7f040032;
         /**  Delete Modal 
          */
-        public static final int del_yes=0x7f040030;
+        public static final int del_yes=0x7f040031;
         public static final int done=0x7f04000e;
-        public static final int editBal_amount=0x7f040035;
-        public static final int editBal_currAmount=0x7f040033;
+        public static final int editBal_amount=0x7f040036;
+        public static final int editBal_currAmount=0x7f040034;
         /**  Edit Balance Screen 
          */
-        public static final int editBal_title=0x7f040032;
-        public static final int editBal_why=0x7f040034;
+        public static final int editBal_title=0x7f040033;
+        public static final int editBal_why=0x7f040035;
         public static final int emptyBalances=0x7f040015;
         public static final int entry_Amount=0x7f040019;
         public static final int entry_Notes=0x7f04001a;
@@ -145,6 +145,7 @@ public final class R {
          */
         public static final int peopleAdd_Title=0x7f040029;
         public static final int peopleAdd_bal=0x7f04002b;
+        public static final int peopleAdd_initial=0x7f04002c;
         public static final int peopleAdd_name=0x7f04002a;
         public static final int peopleList_addNew=0x7f04001e;
         public static final int peopleList_done=0x7f04001f;
@@ -160,9 +161,9 @@ public final class R {
         public static final int title_mainTitle=0x7f04000f;
         /**  View Balance Screen 
          */
-        public static final int viewBal_bal=0x7f04002c;
-        public static final int viewBal_del=0x7f04002e;
-        public static final int viewBal_edit=0x7f04002d;
-        public static final int viewBal_empty=0x7f04002f;
+        public static final int viewBal_bal=0x7f04002d;
+        public static final int viewBal_del=0x7f04002f;
+        public static final int viewBal_edit=0x7f04002e;
+        public static final int viewBal_empty=0x7f040030;
     }
 }
