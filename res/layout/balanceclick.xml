@@ -13,6 +13,7 @@
 	    android:layout_gravity="center_horizontal"
 	    android:text="@string/balance_mainTitle"
 	    android:textColor="#000000"
+	    android:textStyle="bold"
 	    android:textSize="22sp"/>
 
 	<ListView

@@ -50,7 +50,8 @@ public class MoneyManagerActivity extends Activity{
         ((Button) findViewById(R.id.help)).setOnClickListener(
         		new Button.OnClickListener() {
         			@Override public void onClick(View view){
-        				System.out.println("clicked about");
+        				Intent helpIntent = new Intent(view.getContext(), HelpActivity.class);
+        				startActivity(helpIntent);
         			}
         		}
     		);

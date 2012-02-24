@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/scrollViewHelp"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:fillViewport="true">
+
+	<LinearLayout
+		android:id="@+id/linearLayoutHelp"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:background="#FFFFFF"
+		android:orientation="vertical">
+		<TextView
+			android:id="@+id/help_intro"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/help_intro"
+			android:textColor="#000000"/>
+		<TextView
+		    android:id="@+id/help_howTo"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:text="@string/help_howTo"
+		    android:textColor="#000000"
+		    android:textSize="16dp"
+		    android:textStyle="bold" />
+		
+		<TextView
+		    android:id="@+id/help_addPersonTitle"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:text="@string/help_addPersonTitle"
+		    android:textColor="#000000"
+		    android:textSize="12dp"
+		    android:textStyle="bold" />
+	
+		<TextView
+		    android:id="@+id/help_addPerson"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:text="@string/help_addPerson"
+		    android:textColor="#000000"/>
+		
+		<TextView
+		    android:id="@+id/help_addEntryTitle"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:text="@string/help_addEntryTitle"
+		    android:textColor="#000000"
+		    android:textSize="12dp"
+		    android:textStyle="bold" />
+			
+		<TextView 
+		    android:id ="@+id/help_addEntry"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+			android:text="@string/help_addEntry"
+			android:textColor="#000000"/>
+
+		<TextView 
+		    android:id ="@+id/help_addEntryWho"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+			android:text="@string/help_addEntryWho"
+			android:paddingLeft="20dp"
+			android:textColor="#000000"/>
+		
+		<TextView 
+		    android:id ="@+id/help_addEntryWhere"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+			android:text="@string/help_addEntryWhere"
+			android:paddingLeft="20dp"
+			android:textColor="#000000"/>
+		
+		<TextView 
+		    android:id ="@+id/help_addEntryAmount"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+			android:text="@string/help_addEntryAmount"
+			android:paddingLeft="20dp"
+			android:textColor="#000000"/>
+		
+		<TextView 
+		    android:id ="@+id/help_addEntryWho"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+			android:text="@string/help_addEntryNotes"
+			android:paddingLeft="20dp"
+			android:textColor="#000000"/>
+
+		<TextView 
+		    android:id ="@+id/help_addEntryFinish"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+			android:text="@string/help_addEntryFinish"
+			android:textColor="#000000"/>
+		
+		<TextView
+		    android:id="@+id/help_viewBalancesTitle"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:text="@string/help_viewBalancesTitle"
+		    android:textColor="#000000"
+		    android:textSize="12dp"
+		    android:textStyle="bold" />
+		
+		<TextView
+		    android:id="@+id/help_viewBalances"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:text="@string/help_viewBalances"
+		    android:textColor="#000000"/>
+		
+		<LinearLayout
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal">
+		
+			<TextView 
+			    android:id ="@+id/help_viewBalancesRed"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+				android:text="@string/help_viewBalancesRed"
+				android:paddingLeft="20dp"
+				android:textColor="#ff0000"/>
+			
+			<TextView 
+			    android:id ="@+id/help_viewBalancesRedExplain"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:paddingLeft="1dp"
+				android:text="@string/help_viewBalancesRedExplain"
+				android:textColor="#000000"/>
+		</LinearLayout>
+		
+	    <LinearLayout
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal">
+	
+			<TextView 
+			    android:id ="@+id/help_viewBalancesGreen"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+				android:text="@string/help_viewBalancesGreen"
+				android:paddingLeft="20dp"
+				android:textColor="#00A300"/>
+			
+			<TextView 
+			    android:id ="@+id/help_viewBalancesGreenExplain"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:paddingLeft="1dp"
+				android:text="@string/help_viewBalancesGreenExplain"
+				android:textColor="#000000"/>
+		</LinearLayout>
+	
+        <TextView
+		    android:id="@+id/help_viewBalancesMore"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:text="@string/help_viewBalancesMore"
+		    android:textColor="#000000"/>
+		
+	</LinearLayout>
+</ScrollView>

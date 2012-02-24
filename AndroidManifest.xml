@@ -42,5 +42,9 @@
        	    android:label="@string/activity_editBalance"
        	    android:name=".EditBalanceActivity">
   	    </activity>
+  	    <activity
+  	        android:label="@string/activity_help"
+  	        android:name=".HelpActivity">
+  	    </activity>
     </application>
 </manifest>

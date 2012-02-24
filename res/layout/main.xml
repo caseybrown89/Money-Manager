@@ -14,7 +14,8 @@
         android:text="@string/title_mainTitle"
         android:paddingTop="10sp"
         android:textColor="#000000"
-        android:textSize="22sp" />
+        android:textSize="22sp"
+        android:textStyle="bold" />
     
     <ImageView
         android:src="@drawable/dollarbills"
