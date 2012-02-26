@@ -146,13 +146,39 @@
 			    android:paddingRight="5sp"/>
 			
 			<CheckBox
-			    xmlns:android="http://schemas.android.com/apk/res/android"
 			    android:id="@+id/entry_divideCheckBox"
 			    android:layout_height="wrap_content"
 			    android:layout_width="wrap_content"
 			    android:textColor="#000000"
 			    android:textSize="18sp"
 			    android:enabled="false"/>
+	    </LinearLayout>
+	    
+	 	<LinearLayout
+			android:id="@+id/entry_includeLay"
+			android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:orientation="horizontal"
+		    android:gravity="center_horizontal"
+		    android:paddingBottom="10sp"
+		    android:visibility="gone">
+		        
+			<TextView
+			    android:id="@+id/entry_includeText"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:text="@string/entry_include"
+			    android:textColor="#000000"
+			    android:textSize="14sp"
+			    android:paddingRight="5sp"/>
+			
+			<CheckBox
+			    android:id="@+id/entry_includeCheckBox"
+			    android:layout_height="wrap_content"
+			    android:layout_width="wrap_content"
+			    android:textColor="#000000"
+			    android:textSize="18sp"
+			    android:enabled="true"/>
 	    </LinearLayout>
 	
 	   	<Button

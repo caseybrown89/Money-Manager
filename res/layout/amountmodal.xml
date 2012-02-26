@@ -71,7 +71,8 @@
 	        android:layout_width="80dp"
 	        android:layout_height="wrap_content"
 	        android:paddingRight="10sp"
-	        android:numeric="integer|decimal"/>
+	        android:numeric="integer|decimal"
+	        android:maxLength="9"/>
 	</LinearLayout>
     <Button
         android:id="@+id/amountmodal_done"

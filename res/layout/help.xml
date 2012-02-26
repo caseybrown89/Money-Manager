@@ -97,6 +97,13 @@
 			android:text="@string/help_addEntryFinish"
 			android:textColor="#000000"/>
 		
+		<TextView 
+		    android:id ="@+id/help_addEntryChecks"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+			android:text="@string/help_addEntryChecks"
+			android:textColor="#000000"/>
+		
 		<TextView
 		    android:id="@+id/help_viewBalancesTitle"
 		    android:layout_width="wrap_content"

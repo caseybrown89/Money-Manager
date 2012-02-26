@@ -43,6 +43,7 @@
     <string name="entry_Notes">Notes:</string>
     <string name="entry_Submit">Submit</string>
     <string name="entry_divide">Divide Total Balance</string>
+    <string name="entry_include">Include Yourself in Division?</string>
 
     <!--  People List Screen -->
     <string name="peopleList_title">Add People</string>
@@ -91,10 +92,11 @@
     <string name="help_addEntryTitle">Add an Entry:\n</string>
     <string name="help_addEntry">• Next, it\'s time to add an entry.  The add entry screen can be displayed via the \'Add New Entry\' button on the main screen.  Here there are form fields pertaining to the entry itself.  These fields include:\n</string> 
     <string name="help_addEntryWho">• Who - Tapping this field will display a screen where you can select people you\'ve created.  You can select more than one person for an entry.  Also, you can add new people here too.\n</string>
-    <string name="help_addEntryWhere">• Where - a text box pertaining to where the entry occurred.\n</string>
+    <string name="help_addEntryWhere">• Where - A text box pertaining to where the entry occurred or what the entry was.\n</string>
     <string name="help_addEntryAmount">• Amount - Tapping this field displays a pop-up where you can supply an amount for the entry as well check-off whether you lent or borrowed money.\n</string>
-    <string name="help_addEntryNotes">• Notes - a text box where you can enter any other notes you\'d like to keep track of.\n</string>
+    <string name="help_addEntryNotes">• Notes - A text box where you can enter any other notes you\'d like to keep track of.\n</string>
     <string name="help_addEntryFinish">• All fields are mandatory except the Notes field.  When all the fields have been filled, select the \'Submit\' button on the bottom of the screen and the entry will be complete.\n</string>
+	<string name="help_addEntryChecks">• When an entry pertains to multiple people, checking the \'Divide Total Balance\' option will change the amount entered for each person in the entry to be the total amount entered divided by the number of people.  Otherwise, the total amount entered will be attributed to each user.  Checking off the \'Include Self\' option will deduct an amount pertaining to you before dividing the balance among others.\n</string>
 	<string name="help_viewBalancesTitle">View Balances:\n</string>
 	<string name="help_viewBalances">• To view balances, tap the \'View Balances\' button on the main screen.  This will display the balance screen where you can see an overview of all the balances you hold with people.\n\n</string>
 	<string name="help_viewBalancesRed">Red</string>

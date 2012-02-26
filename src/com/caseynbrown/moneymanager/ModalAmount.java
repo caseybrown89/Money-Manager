@@ -119,7 +119,7 @@ public class ModalAmount extends Dialog {
 		}
 
 	    /* Set restriction on the amount of decimal digits on the amount text box */
-	    this.amountEdit.setFilters(new InputFilter[]{new MoneyValueFilter()});
+	    this.amountEdit.setFilters(new InputFilter[]{new DecimalDigitsInputFilter(2, 6)});
 
 		/* Set listeners */
 		this.neg.setOnClickListener(

@@ -20,12 +20,15 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
+import android.opengl.Visibility;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -57,7 +60,8 @@ public class NewEntryActivity extends Activity {
 	/* Form elements */
 	TextView whoBox;
 	EditText whereBox, amountBox, notesBox;
-	CheckBox check;
+	CheckBox divideCheck, includeCheck;
+	LinearLayout includeLay;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -74,7 +78,9 @@ public class NewEntryActivity extends Activity {
 		this.whereBox = ((EditText) findViewById(R.id.entry_whereBox));
 		this.amountBox = ((EditText) findViewById(R.id.entry_amountBox));
 		this.notesBox = ((EditText) findViewById(R.id.entry_notesBox));
-		this.check = ((CheckBox) findViewById(R.id.entry_divideCheckBox));
+		this.divideCheck = ((CheckBox) findViewById(R.id.entry_divideCheckBox));
+		this.includeCheck= ((CheckBox) findViewById(R.id.entry_includeCheckBox));
+		this.includeLay = ((LinearLayout) findViewById(R.id.entry_includeLay));
 
 		/* Add listeners for fields/buttons */
 		/* Bring up list to select people for the entry */
@@ -121,11 +127,19 @@ public class NewEntryActivity extends Activity {
 		 * entry. Otherwise, give the amount provided to each person in the
 		 * entry.
 		 */
+		this.divideCheck.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener(){
+			@Override
+			public void onCheckedChanged(CompoundButton buttonView,
+					boolean isChecked) {
+				toggleIncludeView();
+			}
+		});
+		
 		((TextView) findViewById(R.id.entry_divideText))
 				.setOnClickListener(new TextView.OnClickListener() {
 					@Override
 					public void onClick(View view) {
-						toggleCheckbox();
+						
 					}
 				});
 	}
@@ -207,13 +221,23 @@ public class NewEntryActivity extends Activity {
 
 		try {
 			/* SQL update for multiple people */
-			if (this.selectedIds.size() > 1) {
-
+			int numSelectedIds = this.selectedIds.size();
+			
+			
+			
+			/* The remainder of the division of the amount, will be added to balances of others until 0 */
+			int remainder = -1;
+			if (numSelectedIds > 1) {
+				
+				/* Include yourself when dividing? */
+				if (this.includeCheck.isChecked())
+					numSelectedIds = numSelectedIds + 1;
+				
 				/* Determine the amount for each person in the entry */
 				int newAmount = 0;
-				if (this.check.isChecked()) {
-					int nonRounded = amount / this.selectedIds.size();
-					newAmount = nonRounded;
+				if (this.divideCheck.isChecked()) {
+					remainder = Math.abs(amount) % numSelectedIds;
+					newAmount = amount / numSelectedIds;
 				} else {
 					newAmount = amount;
 				}
@@ -221,8 +245,21 @@ public class NewEntryActivity extends Activity {
 				/* Add an entry in the DB for each user */
 				SQLiteDatabase db = database.getWritableDatabase();
 				for (int i = 0; i < this.selectedIds.size(); i++) {
+					/* Divide remainder among people until 0 */
+					int amountWithBal = newAmount;
+					if (remainder > 0){
+						if (amountWithBal > 0){
+							amountWithBal = amountWithBal + 1;
+							remainder--;
+						} else {
+							amountWithBal = amountWithBal - 1;
+							remainder--;
+						}
+						
+					}
+						
 					int id = this.selectedIds.get(i);
-					addNewEntry(db, id, newAmount, title, notes);
+					addNewEntry(db, id, amountWithBal, title, notes);
 				}
 
 				/* Add an entry for one user */
@@ -289,9 +326,18 @@ public class NewEntryActivity extends Activity {
 	}
 
 	/* Toggle the 'Divide' checkbox */
-	private void toggleCheckbox() {
-		if (this.check.isEnabled()) {
-			this.check.toggle();
+	private void toggleDivideCheckbox() {
+		if (this.divideCheck.isEnabled()) {
+			this.divideCheck.toggle();
+		}
+	}
+	
+	/* Toggle whether the includeCheckbox is visible */
+	private void toggleIncludeView(){
+		if (this.includeLay.getVisibility() == View.GONE){
+			this.includeLay.setVisibility(View.VISIBLE);
+		} else {
+			this.includeLay.setVisibility(View.GONE);
 		}
 	}
 }

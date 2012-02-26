@@ -18,8 +18,8 @@ public final class R {
         public static final int ic_launcher=0x7f020004;
     }
     public static final class id {
-        public static final int addNewEntry=0x7f050033;
-        public static final int addNewPerson=0x7f050032;
+        public static final int addNewEntry=0x7f050034;
+        public static final int addNewPerson=0x7f050033;
         public static final int amountmodal_amount=0x7f050007;
         public static final int amountmodal_amountText=0x7f050009;
         public static final int amountmodal_done=0x7f05000a;
@@ -29,8 +29,8 @@ public final class R {
         public static final int amountmodal_negativeCheck=0x7f050002;
         public static final int amountmodal_positive=0x7f050005;
         public static final int amountmodal_positiveCheck=0x7f050006;
-        public static final int backPeopleList=0x7f050045;
-        public static final int balanceView=0x7f050031;
+        public static final int backPeopleList=0x7f050049;
+        public static final int balanceView=0x7f050032;
         public static final int del_no=0x7f050010;
         public static final int del_title=0x7f05000e;
         public static final int del_yes=0x7f05000f;
@@ -39,19 +39,23 @@ public final class R {
         public static final int editBal_notesBox=0x7f050014;
         public static final int editBal_submitButton=0x7f050015;
         public static final int editBal_whereBox=0x7f050012;
-        public static final int entry_amountBox=0x7f05003a;
-        public static final int entry_amountText=0x7f050039;
-        public static final int entry_divideCheckBox=0x7f05003e;
-        public static final int entry_divideText=0x7f05003d;
-        public static final int entry_notesBox=0x7f05003c;
-        public static final int entry_notesText=0x7f05003b;
-        public static final int entry_whereBox=0x7f050038;
-        public static final int entry_whereText=0x7f050037;
-        public static final int entry_whoBox=0x7f050036;
-        public static final int entry_whoText=0x7f050035;
-        public static final int help=0x7f050034;
+        public static final int entry_amountBox=0x7f05003b;
+        public static final int entry_amountText=0x7f05003a;
+        public static final int entry_divideCheckBox=0x7f05003f;
+        public static final int entry_divideText=0x7f05003e;
+        public static final int entry_includeCheckBox=0x7f050042;
+        public static final int entry_includeLay=0x7f050040;
+        public static final int entry_includeText=0x7f050041;
+        public static final int entry_notesBox=0x7f05003d;
+        public static final int entry_notesText=0x7f05003c;
+        public static final int entry_whereBox=0x7f050039;
+        public static final int entry_whereText=0x7f050038;
+        public static final int entry_whoBox=0x7f050037;
+        public static final int entry_whoText=0x7f050036;
+        public static final int help=0x7f050035;
         public static final int help_addEntry=0x7f05001d;
         public static final int help_addEntryAmount=0x7f050020;
+        public static final int help_addEntryChecks=0x7f050022;
         public static final int help_addEntryFinish=0x7f050021;
         public static final int help_addEntryTitle=0x7f05001c;
         public static final int help_addEntryWhere=0x7f05001f;
@@ -60,34 +64,34 @@ public final class R {
         public static final int help_addPersonTitle=0x7f05001a;
         public static final int help_howTo=0x7f050019;
         public static final int help_intro=0x7f050018;
-        public static final int help_viewBalances=0x7f050023;
-        public static final int help_viewBalancesGreen=0x7f050026;
-        public static final int help_viewBalancesGreenExplain=0x7f050027;
-        public static final int help_viewBalancesMore=0x7f050028;
-        public static final int help_viewBalancesRed=0x7f050024;
-        public static final int help_viewBalancesRedExplain=0x7f050025;
-        public static final int help_viewBalancesTitle=0x7f050022;
-        public static final int indiv_Name=0x7f050029;
-        public static final int indiv_amount=0x7f050030;
-        public static final int indiv_balance=0x7f05002a;
-        public static final int indiv_balanceAmt=0x7f05002b;
-        public static final int indiv_date=0x7f05002e;
-        public static final int indiv_delUser=0x7f05002d;
-        public static final int indiv_editBal=0x7f05002c;
-        public static final int indiv_title=0x7f05002f;
+        public static final int help_viewBalances=0x7f050024;
+        public static final int help_viewBalancesGreen=0x7f050027;
+        public static final int help_viewBalancesGreenExplain=0x7f050028;
+        public static final int help_viewBalancesMore=0x7f050029;
+        public static final int help_viewBalancesRed=0x7f050025;
+        public static final int help_viewBalancesRedExplain=0x7f050026;
+        public static final int help_viewBalancesTitle=0x7f050023;
+        public static final int indiv_Name=0x7f05002a;
+        public static final int indiv_amount=0x7f050031;
+        public static final int indiv_balance=0x7f05002b;
+        public static final int indiv_balanceAmt=0x7f05002c;
+        public static final int indiv_date=0x7f05002f;
+        public static final int indiv_delUser=0x7f05002e;
+        public static final int indiv_editBal=0x7f05002d;
+        public static final int indiv_title=0x7f050030;
         public static final int linearLayout2=0x7f050004;
         public static final int linearLayout3=0x7f050008;
         public static final int linearLayoutHelp=0x7f050017;
-        public static final int peopleAddDone=0x7f050043;
-        public static final int peopleLinearMain=0x7f050040;
-        public static final int peopleListAddNew=0x7f050044;
-        public static final int peopleaddBal=0x7f050042;
-        public static final int peopleaddName=0x7f050041;
+        public static final int peopleAddDone=0x7f050047;
+        public static final int peopleLinearMain=0x7f050044;
+        public static final int peopleListAddNew=0x7f050048;
+        public static final int peopleaddBal=0x7f050046;
+        public static final int peopleaddName=0x7f050045;
         public static final int root=0x7f05000b;
         public static final int rowAmount=0x7f05000d;
         public static final int rowName=0x7f05000c;
         public static final int scrollViewHelp=0x7f050016;
-        public static final int submitButton=0x7f05003f;
+        public static final int submitButton=0x7f050043;
     }
     public static final class layout {
         public static final int amountmodal=0x7f030000;
@@ -116,15 +120,15 @@ public final class R {
         public static final int activity_peopleList=0x7f040004;
         /**  Amount Modal Screen 
          */
-        public static final int amountmodal_Title=0x7f040021;
-        public static final int amountmodal_newEntryNeg=0x7f040023;
-        public static final int amountmodal_newEntryPos=0x7f040022;
-        public static final int amountmodal_newUserNeg=0x7f040025;
-        public static final int amountmodal_newUserPos=0x7f040024;
-        public static final int amountmodal_updateNegBalNeg=0x7f040026;
-        public static final int amountmodal_updateNegBalPos=0x7f040027;
-        public static final int amountmodal_updatePosBalNeg=0x7f040028;
-        public static final int amountmodal_updatePosBalPos=0x7f040029;
+        public static final int amountmodal_Title=0x7f040022;
+        public static final int amountmodal_newEntryNeg=0x7f040024;
+        public static final int amountmodal_newEntryPos=0x7f040023;
+        public static final int amountmodal_newUserNeg=0x7f040026;
+        public static final int amountmodal_newUserPos=0x7f040025;
+        public static final int amountmodal_updateNegBalNeg=0x7f040027;
+        public static final int amountmodal_updateNegBalPos=0x7f040028;
+        public static final int amountmodal_updatePosBalNeg=0x7f040029;
+        public static final int amountmodal_updatePosBalPos=0x7f04002a;
         /**   Strings by screen 
   Reusable Strings 
          */
@@ -138,17 +142,17 @@ public final class R {
         /**  Application Defaults 
          */
         public static final int defaultTextTitleSize=0x7f04000a;
-        public static final int del_no=0x7f040033;
+        public static final int del_no=0x7f040034;
         /**  Delete Modal 
          */
-        public static final int del_yes=0x7f040032;
+        public static final int del_yes=0x7f040033;
         public static final int done=0x7f04000f;
-        public static final int editBal_amount=0x7f040037;
-        public static final int editBal_currAmount=0x7f040035;
+        public static final int editBal_amount=0x7f040038;
+        public static final int editBal_currAmount=0x7f040036;
         /**  Edit Balance Screen 
          */
-        public static final int editBal_title=0x7f040034;
-        public static final int editBal_why=0x7f040036;
+        public static final int editBal_title=0x7f040035;
+        public static final int editBal_why=0x7f040037;
         public static final int emptyBalances=0x7f040016;
         public static final int entry_Amount=0x7f04001a;
         public static final int entry_Notes=0x7f04001b;
@@ -156,43 +160,45 @@ public final class R {
         public static final int entry_Where=0x7f040019;
         public static final int entry_Who=0x7f040018;
         public static final int entry_divide=0x7f04001d;
+        public static final int entry_include=0x7f04001e;
         /**   New Entry Screen 
          */
         public static final int entry_mainTitle=0x7f040017;
-        public static final int help_addEntry=0x7f04003d;
-        public static final int help_addEntryAmount=0x7f040040;
-        public static final int help_addEntryFinish=0x7f040042;
-        public static final int help_addEntryNotes=0x7f040041;
-        public static final int help_addEntryTitle=0x7f04003c;
-        public static final int help_addEntryWhere=0x7f04003f;
-        public static final int help_addEntryWho=0x7f04003e;
-        public static final int help_addPerson=0x7f04003b;
-        public static final int help_addPersonTitle=0x7f04003a;
-        public static final int help_howTo=0x7f040039;
+        public static final int help_addEntry=0x7f04003e;
+        public static final int help_addEntryAmount=0x7f040041;
+        public static final int help_addEntryChecks=0x7f040044;
+        public static final int help_addEntryFinish=0x7f040043;
+        public static final int help_addEntryNotes=0x7f040042;
+        public static final int help_addEntryTitle=0x7f04003d;
+        public static final int help_addEntryWhere=0x7f040040;
+        public static final int help_addEntryWho=0x7f04003f;
+        public static final int help_addPerson=0x7f04003c;
+        public static final int help_addPersonTitle=0x7f04003b;
+        public static final int help_howTo=0x7f04003a;
         /**  Help Screen 
          */
-        public static final int help_intro=0x7f040038;
-        public static final int help_viewBalances=0x7f040044;
-        public static final int help_viewBalancesGreen=0x7f040047;
-        public static final int help_viewBalancesGreenExplain=0x7f040048;
-        public static final int help_viewBalancesMore=0x7f040049;
-        public static final int help_viewBalancesRed=0x7f040045;
-        public static final int help_viewBalancesRedExplain=0x7f040046;
-        public static final int help_viewBalancesTitle=0x7f040043;
+        public static final int help_intro=0x7f040039;
+        public static final int help_viewBalances=0x7f040046;
+        public static final int help_viewBalancesGreen=0x7f040049;
+        public static final int help_viewBalancesGreenExplain=0x7f04004a;
+        public static final int help_viewBalancesMore=0x7f04004b;
+        public static final int help_viewBalancesRed=0x7f040047;
+        public static final int help_viewBalancesRedExplain=0x7f040048;
+        public static final int help_viewBalancesTitle=0x7f040045;
         /**   Activity Names 
          */
         public static final int mainTitle=0x7f040000;
         /**  People Add Screen 
          */
-        public static final int peopleAdd_Title=0x7f04002a;
-        public static final int peopleAdd_bal=0x7f04002c;
-        public static final int peopleAdd_initial=0x7f04002d;
-        public static final int peopleAdd_name=0x7f04002b;
-        public static final int peopleList_addNew=0x7f04001f;
-        public static final int peopleList_done=0x7f040020;
+        public static final int peopleAdd_Title=0x7f04002b;
+        public static final int peopleAdd_bal=0x7f04002d;
+        public static final int peopleAdd_initial=0x7f04002e;
+        public static final int peopleAdd_name=0x7f04002c;
+        public static final int peopleList_addNew=0x7f040020;
+        public static final int peopleList_done=0x7f040021;
         /**   People List Screen 
          */
-        public static final int peopleList_title=0x7f04001e;
+        public static final int peopleList_title=0x7f04001f;
         public static final int title_addEntry=0x7f040013;
         public static final int title_addPerson=0x7f040012;
         public static final int title_balanceView=0x7f040011;
@@ -202,9 +208,9 @@ public final class R {
         public static final int title_mainTitle=0x7f040010;
         /**  View Balance Screen 
          */
-        public static final int viewBal_bal=0x7f04002e;
-        public static final int viewBal_del=0x7f040030;
-        public static final int viewBal_edit=0x7f04002f;
-        public static final int viewBal_empty=0x7f040031;
+        public static final int viewBal_bal=0x7f04002f;
+        public static final int viewBal_del=0x7f040031;
+        public static final int viewBal_edit=0x7f040030;
+        public static final int viewBal_empty=0x7f040032;
     }
 }
