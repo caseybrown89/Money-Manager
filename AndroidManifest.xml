@@ -8,10 +8,11 @@
 
     <application
         android:icon="@drawable/ic_launcher"
-        android:label="@string/activity_main" android:debuggable="true">
+        android:label="@string/activity_main" android:debuggable="false">
         <activity
             android:label="@string/activity_main"
-            android:name=".MoneyManagerActivity" >
+            android:name=".MoneyManagerActivity"
+            android:screenOrientation="portrait">
             <intent-filter >
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,31 +21,38 @@
         </activity>
         <activity
             android:label="@string/activity_balance"
-            android:name=".BalanceViewActivity">
+            android:name=".BalanceViewActivity"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:label="@string/activity_newEntry"
-            android:name=".NewEntryActivity">
+            android:name=".NewEntryActivity"
+            android:screenOrientation="portrait">
         </activity>
         <activity 
             android:label="@string/activity_peopleList"
-            android:name=".PeopleListActivity">
+            android:name=".PeopleListActivity"
+            android:screenOrientation="portrait">
         </activity>
        	<activity 
        	    android:label="@string/activity_addPeople"
-       	    android:name=".PeopleAddActivity">
+       	    android:name=".PeopleAddActivity"
+       	    android:screenOrientation="portrait">
   	    </activity>
   	    <activity 
        	    android:label="@string/activity_indivBal"
-       	    android:name=".IndividualBalanceViewActivity">
+       	    android:name=".IndividualBalanceViewActivity"
+       	    android:screenOrientation="portrait">
   	    </activity>
   	    <activity 
        	    android:label="@string/activity_editBalance"
-       	    android:name=".EditBalanceActivity">
+       	    android:name=".EditBalanceActivity"
+       	    android:screenOrientation="portrait">
   	    </activity>
   	    <activity
   	        android:label="@string/activity_help"
-  	        android:name=".HelpActivity">
+  	        android:name=".HelpActivity"
+  	        android:screenOrientation="portrait">
   	    </activity>
     </application>
 </manifest>
