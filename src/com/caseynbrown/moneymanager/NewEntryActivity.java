@@ -81,6 +81,9 @@ public class NewEntryActivity extends Activity {
 		this.divideCheck = ((CheckBox) findViewById(R.id.entry_divideCheckBox));
 		this.includeCheck= ((CheckBox) findViewById(R.id.entry_includeCheckBox));
 		this.includeLay = ((LinearLayout) findViewById(R.id.entry_includeLay));
+		
+		/* Initialize selectedIds ArrayList */
+		selectedIds = null;
 
 		/* Add listeners for fields/buttons */
 		/* Bring up list to select people for the entry */
@@ -89,6 +92,7 @@ public class NewEntryActivity extends Activity {
 			public void onClick(View view) {
 				Intent listIntent = new Intent(view.getContext(),
 						PeopleListActivity.class);
+				listIntent.putExtra("ids", selectedIds);
 				startActivityForResult(listIntent, PEOPLE_LIST_CREATE);
 			}
 		});
@@ -116,8 +120,9 @@ public class NewEntryActivity extends Activity {
 								updateSQL();
 							} catch (Exception e) {
 								e.printStackTrace();
+							} finally {
+								finish();
 							}
-							finish();
 						}
 					}
 				});

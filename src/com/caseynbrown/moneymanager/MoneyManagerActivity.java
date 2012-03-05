@@ -19,7 +19,7 @@ public class MoneyManagerActivity extends Activity{
         ((Button) findViewById(R.id.balanceView)).setOnClickListener(
         		new Button.OnClickListener() {
         			@Override public void onClick(View view){
-        				Intent balIntent = new Intent(view.getContext(), BalanceViewActivity.class);
+        				Intent balIntent = new Intent(view.getContext(), ViewBalanceActivity.class);
         				balIntent.putExtra("view", false);
         				startActivity(balIntent);
         			}

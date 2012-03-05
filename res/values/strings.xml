@@ -12,12 +12,14 @@
     <string name="activity_indivBal">Individual Balance</string>
     <string name="activity_editBalance">Edit Balance</string>
     <string name="activity_help">Help</string>
-    
+    <string name="activity_viewEntry">View Entry</string>
+        
     <!-- Application Defaults -->
     <string name="defaultTextTitleSize">22sp</string>
     <string name="defaultTextSize">18sp</string>
     <string name="defaultTextColor">#000000</string>
     <string name="defaultBackgroundColor">#FFFFFF</string>
+    <string name="defaultGreenColor">#00A300</string>
     
     <!--  Strings by screen -->
     <!--  Reusable Strings -->
@@ -82,6 +84,12 @@
     <string name="editBal_currAmount">Current Amount:</string>
     <string name="editBal_why">Why:</string>
     <string name="editBal_amount">Amount:</string>
+    
+    <!--  View Entry Screen -->
+    <string name="viewEntry_title">View Entry</string>
+    <string name="viewEntry_date">Date:</string>
+    <string name="viewEntry_delete">Delete Entry</string>
+    <string name="viewEntry_notes">None</string>
     
     <!-- Help Screen -->
     <string name="help_intro">Thank you for downloading Money Manager.  The purpose of this application is to help you keep track of who you\'ve lent or borrowed money from.\n</string>

@@ -16,7 +16,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DBData extends SQLiteOpenHelper {
 	private static final String DATABASE_NAME = "main.db";
-	private static final int DATABASE_VERSION = 1;
+	private static final int DATABASE_VERSION = 2;
 
 	public DBData(Context ctx){
 		super(ctx, DATABASE_NAME, null, DATABASE_VERSION);
@@ -48,14 +48,19 @@ public class DBData extends SQLiteOpenHelper {
 		db.execSQL("CREATE TRIGGER update_total_balance AFTER INSERT ON "+TABLE_NAME_ENTRY+" BEGIN " +
 				"UPDATE "+TABLE_NAME_PEOPLE+" SET "+AMOUNT_PEOPLE+" = "+AMOUNT_PEOPLE+" + NEW."+AMOUNT_ENTRY+" WHERE "+_ID+" = NEW."+USER_ENTRY+";" +
 						"END;");
-
+		db.execSQL("CREATE TRIGGER update_total_balance2 AFTER DELETE ON "+TABLE_NAME_ENTRY+" BEGIN " +
+				"UPDATE "+TABLE_NAME_PEOPLE+" SET "+AMOUNT_PEOPLE+" = "+AMOUNT_PEOPLE+" - OLD."+AMOUNT_ENTRY+" WHERE "+_ID+" = OLD."+USER_ENTRY+";" +
+						"END;");
 	}
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion){
-		db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_PEOPLE);
-		db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_ENTRY);
-		onCreate(db);
+		/* Add trigger to update person balance if entries are deleted */
+		if (oldVersion == 1 && newVersion == 2){
+			db.execSQL("CREATE TRIGGER update_total_balance2 AFTER DELETE ON "+TABLE_NAME_ENTRY+" BEGIN " +
+					"UPDATE "+TABLE_NAME_PEOPLE+" SET "+AMOUNT_PEOPLE+" = "+AMOUNT_PEOPLE+" - OLD."+AMOUNT_ENTRY+" WHERE "+_ID+" = OLD."+USER_ENTRY+";" +
+							"END;");
+		}
 	}
 
 

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fillViewport="true">
+    
+	<LinearLayout 
+	    android:id="@+id/root"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:orientation="vertical"
+	    android:gravity="center_horizontal"
+	    android:background="#FFFFFF">
+	
+	    <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:gravity="center_horizontal"
+	        android:text="@string/viewEntry_title"
+	        android:textColor="#000000"
+	        android:textStyle="bold"
+	        android:textSize="22sp"
+	        android:paddingBottom="25sp"/>
+			
+		<LinearLayout
+			android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:orientation="horizontal"
+		    android:gravity="center_horizontal"
+		    android:paddingBottom="10sp"
+		    android:textColor="#000000">
+		        
+			<TextView
+			    android:id="@+id/viewEntry_whoTitle"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:text="@string/entry_Who"
+			    android:textColor="#000000"
+			    android:textSize="18sp"
+			    android:paddingRight="5sp"/>
+		    
+		    <TextView
+		        android:id="@+id/viewEntry_whoText"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:textColor="#000000"/>
+		</LinearLayout>
+		
+		<LinearLayout
+			android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:orientation="horizontal"
+		    android:gravity="center_horizontal"
+		    android:paddingBottom="10sp">
+		        
+			<TextView
+			    android:id="@+id/viewEntry_dateTitle"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:text="@string/viewEntry_date"
+			    android:textColor="#000000"
+			    android:textSize="18sp"
+			    android:paddingRight="5sp"/>
+		    
+		    <TextView
+		        android:id="@+id/viewEntry_dateText"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:textColor="#000000"/>
+		</LinearLayout>
+		
+	    <LinearLayout
+			android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:orientation="horizontal"
+		    android:gravity="center_horizontal"
+		    android:paddingBottom="10sp">
+		        
+			<TextView
+			    android:id="@+id/viewEntry_whereTitle"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:text="@string/entry_Where"
+			    android:textColor="#000000"
+			    android:textSize="18sp"
+			    android:paddingRight="5sp"/>
+		    
+		    <TextView
+		        android:id="@+id/viewEntry_whereText"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:textColor="#000000"/>
+		</LinearLayout>
+		
+	    <LinearLayout
+			android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:orientation="horizontal"
+		    android:gravity="center_horizontal"
+		    android:paddingBottom="10sp">
+		        
+			<TextView
+			    android:id="@+id/viewEntry_amountTitle"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:text="@string/entry_Amount"
+			    android:textColor="#000000"
+			    android:textSize="18sp"
+			    android:paddingRight="5sp"/>
+		    		    <TextView
+		        android:id="@+id/viewEntry_amountText"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:textColor="#000000"/>
+	
+		</LinearLayout>
+		
+	   	<LinearLayout
+			android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:orientation="horizontal"
+		    android:gravity="center_horizontal"
+		    android:paddingBottom="10sp">
+		        
+			<TextView
+			    android:id="@+id/viewEntry_notesTitle"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:text="@string/entry_Notes"
+			    android:textColor="#000000"
+			    android:textSize="18sp"
+			    android:paddingRight="5sp"/>
+			<TextView
+			    android:id="@+id/viewEntry_notesText"
+			    android:layout_height="wrap_content"
+			    android:layout_width="wrap_content"
+			    android:textColor="#000000"/>
+	   	</LinearLayout>
+	   		 	
+	   	<Button
+	   	    android:id="@+id/viewEntry_deleteButton"
+	   	    android:layout_width="wrap_content"
+	   	    android:layout_height="wrap_content"
+	   	    android:text="@string/viewEntry_delete" />
+	
+	</LinearLayout>
+</ScrollView>

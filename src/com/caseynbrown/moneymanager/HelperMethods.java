@@ -1,4 +1,6 @@
 package com.caseynbrown.moneymanager;
+import java.util.ArrayList;
+
 import android.graphics.Color;
 import android.widget.EditText;
 
@@ -107,6 +109,21 @@ public class HelperMethods {
 
 		amountBox.setText(sign + amt);
 		amountBox.setTextColor(color);
+	}
+	
+	/* Searches an unsorted ArrayList of Integers incrementally for the presence of a specific
+	 *  integer. */
+	public static boolean intInArrayList(int i, ArrayList<Integer> list){
+		if (list != null){
+			
+			int size = list.size();
+			for (int x = 0; x < size; x++){
+				if (list.get(x) == i){
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 
 

@@ -51,8 +51,6 @@ public class PeopleAddActivity extends Activity {
 		this.amountEdit = ((EditText) findViewById(R.id.peopleaddBal));
 		this.doneButton = ((Button) findViewById(R.id.peopleAddDone));
 
-		this.db = new DBData(this);
-
 		this.doneButton.setOnClickListener(new Button.OnClickListener() {
 
 			@Override
@@ -90,10 +88,17 @@ public class PeopleAddActivity extends Activity {
 			}
 		});
 	}
+	
+	@Override
+	public void onResume(){
+		super.onResume();
+		
+		this.db = new DBData(this);
+	}
 
 	@Override
-	public void onDestroy() {
-		super.onDestroy();
+	public void onPause() {
+		super.onPause();
 
 		/* Close DB connection */
 		this.db.close();
@@ -133,6 +138,7 @@ public class PeopleAddActivity extends Activity {
 			while (c.moveToNext()){
 				id = c.getInt(0);
 			}
+			c.close();
 						
 			/* Add a new entry for the initial balance from the person just added to the DB */ 
 			personEntry.clear();
@@ -146,7 +152,13 @@ public class PeopleAddActivity extends Activity {
 			personEntry.put(TITLE_ENTRY, getString(R.string.peopleAdd_initial));
 			personEntry.put(AMOUNT_ENTRY, amount);
 			personEntry.put(NOTES_ENTRY, "");
-			writable.insertOrThrow(TABLE_NAME_ENTRY, null, personEntry);
+			
+			try {
+				writable.insertOrThrow(TABLE_NAME_ENTRY, null, personEntry);
+			} catch (Exception e){
+				System.out.println("Unable to create entry in PeopleAddActivity");
+				e.printStackTrace();
+			}
 		}
 		writable.close();
 	}

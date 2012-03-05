@@ -25,9 +25,11 @@ public class PeopleListActivity extends ListActivity{
 	private DBData people;
 	private TextCheckboxAdapter check;
 	private static String[] FROM = {_ID, NAME_PEOPLE, AMOUNT_PEOPLE};
-	private static String ORDER_BY = NAME_PEOPLE + " DESC";
+	private static String ORDER_BY = NAME_PEOPLE + " ASC";
 	private ListView lv;
 	Button addPeople;
+	
+	ArrayList<Integer> selectedIds;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,10 @@ public class PeopleListActivity extends ListActivity{
         setContentView(R.layout.peoplelist);
         people = new DBData(this);
         this.addPeople = ((Button) findViewById(R.id.peopleListAddNew));
+        
+        /* Persist selectedIds if user returns to this screen */
+        Intent i = getIntent();
+        this.selectedIds = i.getIntegerArrayListExtra("ids");
 
         // Add items from the database into a cursor
         populateList();
@@ -98,7 +104,11 @@ public class PeopleListActivity extends ListActivity{
     		int id = cursor.getInt(0);
     		String name = cursor.getString(1);
     		Drawable icon = getResources().getDrawable(R.drawable.checkmarksmall);
-    		this.check.addItem(new TextCheckbox(id, name, icon));
+    		TextCheckbox newCheck = new TextCheckbox(id, name, icon);
+    		if (HelperMethods.intInArrayList(id, this.selectedIds)){
+    			newCheck.setChecked(true);
+    		}
+    		this.check.addItem(newCheck);
     	}
 	}
 

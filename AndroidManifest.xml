@@ -21,7 +21,7 @@
         </activity>
         <activity
             android:label="@string/activity_balance"
-            android:name=".BalanceViewActivity"
+            android:name=".ViewBalanceActivity"
             android:screenOrientation="portrait">
         </activity>
         <activity
@@ -41,7 +41,7 @@
   	    </activity>
   	    <activity 
        	    android:label="@string/activity_indivBal"
-       	    android:name=".IndividualBalanceViewActivity"
+       	    android:name=".ViewIndividualBalanceActivity"
        	    android:screenOrientation="portrait">
   	    </activity>
   	    <activity 
@@ -54,5 +54,10 @@
   	        android:name=".HelpActivity"
   	        android:screenOrientation="portrait">
   	    </activity>
+  	    <activity
+  	        android:label="@string/activity_viewEntry"
+  	        android:name=".ViewEntryActivity"
+  	        android:screenOrientation="portrait">
+	    </activity>
     </application>
 </manifest>
