@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/indivMenu_email"
+          android:title="E-Mail Balance"
+          android:titleCondensed="E-Mail Balances"
+          android:icon="@drawable/ic_dialog_email"
+          android:onClick="mailBalances"
+          android:alphabeticShortcut="e"
+          android:numericShortcut="1"
+          android:checkable="false"
+          android:visible="true"
+          android:enabled="true"
+          android:orderInCategory="1" />
+</menu>

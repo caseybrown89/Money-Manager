@@ -148,6 +148,14 @@ public class NewEntryActivity extends Activity {
 					}
 				});
 	}
+	
+	@Override
+	public void onPause(){
+		super.onPause();
+		
+		this.selectedIds = new ArrayList<Integer>();
+		this.selectedNames = new ArrayList<String>();
+	}
 
 	/* Display the modal amount pop up */
 	public void showModal() {
@@ -190,10 +198,15 @@ public class NewEntryActivity extends Activity {
 			/* Enable the 'Divide' checkbox */
 			if (this.numIds > 1) {
 				check.setEnabled(true);
+			} else {
+				/* Disable All Check boxes */
+				check.setEnabled(false);
+				check.setChecked(false);
+				this.divideCheck.setEnabled(false);
+				this.divideCheck.setChecked(false);
 			}
 		} else {
 			this.whoBox.setText("");
-			check.setEnabled(false);
 		}
 	}
 

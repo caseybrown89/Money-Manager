@@ -18,6 +18,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -111,6 +114,58 @@ public class ViewIndividualBalanceActivity extends ListActivity {
 		
 		this.db.close();
 		this.database.close();
+	}
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu m){
+		MenuInflater i = getMenuInflater();
+		i.inflate(R.layout.individualbalancemenu, m);
+		return true;
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem i){
+		switch (i.getItemId()){
+			case R.id.indivMenu_email:
+				sendMail();
+			default:
+				return super.onOptionsItemSelected(i);
+		}
+	}
+	
+	/* A method which starts the Mail Activity with a list of balances as the message */
+	private void sendMail(){
+		Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
+		emailIntent.setType("plan/text");
+		StringBuilder body = new StringBuilder();
+		
+		body.append("Hi "+this.name+",\n\n");
+		
+		if (this.amount == 0){
+			if (this.amount < 0){
+				body.append("I currently owe you a total of $"+HelperMethods.intToDollar(this.amount)+".");
+			} else {
+				body.append("You currently owe me a total of $"+HelperMethods.intToDollar(this.amount)+".");
+			}
+		
+			body.append("A summary of the events that contributed to this balance can be found below:\n\n");
+			
+			/* Add the individual entries */
+			Cursor c = getEntries();
+			while (c.moveToNext()){
+				String date = c.getString(1);
+				String title = c.getString(2);
+				int amount = c.getInt(3);
+				
+				body.append(date+" "+title+" $"+HelperMethods.intToDollar(amount)+"\n");
+			}
+			c.close();
+		} else {
+			body.append("We are currently at an even balance.\n");
+		}
+		
+		emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, body.toString());
+		startActivity(Intent.createChooser(emailIntent, "Send email..."));
 	}
 
 	/* Displays the Modal Delete pop up */

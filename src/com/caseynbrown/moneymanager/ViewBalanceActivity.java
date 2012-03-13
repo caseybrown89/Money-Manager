@@ -39,8 +39,6 @@ public class ViewBalanceActivity extends ListActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        idList = new ArrayList<Integer>();
-
         /* Should list items be clickable? */
         Intent i = getIntent();
         this.view = i.getBooleanExtra("view", true);
@@ -50,9 +48,6 @@ public class ViewBalanceActivity extends ListActivity {
         } else {
         	setContentView(R.layout.balanceclick);
         }
-
-        people = new DBData(this);
-        populateList();
 
         if (!this.view){
         	this.lv = getListView();
@@ -71,7 +66,9 @@ public class ViewBalanceActivity extends ListActivity {
     public void onResume(){
     	super.onResume();
 
-    	people = new DBData(this);
+        this.idList = new ArrayList<Integer>();
+    	
+    	this.people = new DBData(this);
     	populateList();
     }
 
