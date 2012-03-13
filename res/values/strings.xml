@@ -113,4 +113,10 @@
 	<string name="help_viewBalancesGreenExplain"> Balances indicate that you currently hold a credit that person.\n\n</string>
 	<string name="help_viewBalancesMore">• Clicking on any of the rows in the list will bring you to the Balance screen for that person.  Here you can see a summary of the entries you have with that person.  Also, this screen offers the ability to edit the balance you have with that person and also to delete that person.\n</string>
 
+	<!-- Email -->
+	<string name="mail_promo">\nThis message was written by Money Manager.  I keep track of when I lend or borrow money with Money Manager.  Look for it on the Android Market!</string>
+	<string name="mail_summary">A summary of the events that contributed to this balance can be found below:\n\n</string>
+	<string name="mail_iOwe">I currently owe you a total of $</string>
+	<string name="mail_youOwe">You currently owe me a total of $</string>
+	<string name="mail_even">We are currently at an even balance.\n</string>
 </resources>

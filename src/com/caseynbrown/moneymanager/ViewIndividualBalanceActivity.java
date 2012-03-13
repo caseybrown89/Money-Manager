@@ -41,8 +41,8 @@ public class ViewIndividualBalanceActivity extends ListActivity {
 	private static String ORDER_BY = DATE_ENTRY + " DESC";
 	private static int[] TO = {0 ,R.id.indiv_date, R.id.indiv_title, R.id.indiv_amount};
 	private ListView lv;
-	
-	/* entryIds contains the entry ids of each entry listed on the ListView, entryIds is 
+
+	/* entryIds contains the entry ids of each entry listed on the ListView, entryIds is
 	 * used when calling the ViewEntryActivity
 	 */
 	private ArrayList<Integer> entryIds;
@@ -51,7 +51,7 @@ public class ViewIndividualBalanceActivity extends ListActivity {
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.individualbalance);
-				
+
 		Intent i = getIntent();
         this.personId = i.getIntExtra("id", 0);
 
@@ -75,7 +75,7 @@ public class ViewIndividualBalanceActivity extends ListActivity {
 						startActivity(editBal);
 					}
 				});
-		
+
 		ListView lv = this.getListView();
 		lv.setOnItemClickListener(new ListView.OnItemClickListener(){
 			@Override
@@ -86,7 +86,7 @@ public class ViewIndividualBalanceActivity extends ListActivity {
 				i.putExtra("name", name);
 				startActivity(i);
 			}
-			
+
 		});
 	}
 
@@ -95,10 +95,10 @@ public class ViewIndividualBalanceActivity extends ListActivity {
 		super.onResume();
 
 		this.entryIds = new ArrayList<Integer>();
-		
+
 		database = new DBData(this);
 		this.db = database.getReadableDatabase();
-		
+
 		Cursor c = getPersonInfo();
 		updatePersonInfo(c);
 		c.close();
@@ -111,18 +111,18 @@ public class ViewIndividualBalanceActivity extends ListActivity {
 	@Override
 	public void onPause(){
 		super.onPause();
-		
+
 		this.db.close();
 		this.database.close();
 	}
-	
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu m){
 		MenuInflater i = getMenuInflater();
 		i.inflate(R.layout.individualbalancemenu, m);
 		return true;
 	}
-	
+
 	@Override
 	public boolean onOptionsItemSelected(MenuItem i){
 		switch (i.getItemId()){
@@ -132,38 +132,40 @@ public class ViewIndividualBalanceActivity extends ListActivity {
 				return super.onOptionsItemSelected(i);
 		}
 	}
-	
+
 	/* A method which starts the Mail Activity with a list of balances as the message */
 	private void sendMail(){
 		Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
 		emailIntent.setType("plan/text");
 		StringBuilder body = new StringBuilder();
-		
+
 		body.append("Hi "+this.name+",\n\n");
-		
-		if (this.amount == 0){
+
+		if (this.amount != 0){
 			if (this.amount < 0){
-				body.append("I currently owe you a total of $"+HelperMethods.intToDollar(this.amount)+".");
+				body.append(getResources().getString(R.string.mail_iOwe)+HelperMethods.intToDollar(this.amount)+".");
 			} else {
-				body.append("You currently owe me a total of $"+HelperMethods.intToDollar(this.amount)+".");
+				body.append(getResources().getString(R.string.mail_youOwe)+HelperMethods.intToDollar(this.amount)+".");
 			}
-		
-			body.append("A summary of the events that contributed to this balance can be found below:\n\n");
-			
+
+			body.append("  "+getResources().getString(R.string.mail_summary));
+
 			/* Add the individual entries */
 			Cursor c = getEntries();
 			while (c.moveToNext()){
 				String date = c.getString(1);
 				String title = c.getString(2);
 				int amount = c.getInt(3);
-				
+
 				body.append(date+" "+title+" $"+HelperMethods.intToDollar(amount)+"\n");
 			}
 			c.close();
 		} else {
-			body.append("We are currently at an even balance.\n");
+			body.append(getResources().getString(R.string.mail_even));
 		}
-		
+
+		body.append(getResources().getString(R.string.mail_promo));
+
 		emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, body.toString());
 		startActivity(Intent.createChooser(emailIntent, "Send email..."));
 	}
@@ -183,7 +185,7 @@ public class ViewIndividualBalanceActivity extends ListActivity {
 			if (delete){
 				String query = "DELETE FROM "+TABLE_NAME_PEOPLE+" WHERE "+_ID+"="+personId;
 				db.execSQL(query);
-				
+
 				finish();
 			}
 		}
@@ -195,7 +197,7 @@ public class ViewIndividualBalanceActivity extends ListActivity {
         	" WHERE "+USER_ENTRY+"="+this.personId+" ORDER BY "+_ID+" DESC";
         Cursor cursor = this.db.rawQuery(query, null);
         startManagingCursor(cursor);
-        
+
         return cursor;
     }
 
@@ -205,7 +207,7 @@ public class ViewIndividualBalanceActivity extends ListActivity {
     	" WHERE "+_ID+"="+this.personId;
     	Cursor cursor = this.db.rawQuery(query, null);
     	startManagingCursor(cursor);
-    	
+
     	return cursor;
     }
 

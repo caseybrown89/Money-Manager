@@ -20,7 +20,6 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
-import android.opengl.Visibility;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -81,7 +80,7 @@ public class NewEntryActivity extends Activity {
 		this.divideCheck = ((CheckBox) findViewById(R.id.entry_divideCheckBox));
 		this.includeCheck= ((CheckBox) findViewById(R.id.entry_includeCheckBox));
 		this.includeLay = ((LinearLayout) findViewById(R.id.entry_includeLay));
-		
+
 		/* Initialize selectedIds ArrayList */
 		selectedIds = null;
 
@@ -139,20 +138,20 @@ public class NewEntryActivity extends Activity {
 				toggleIncludeView();
 			}
 		});
-		
+
 		((TextView) findViewById(R.id.entry_divideText))
 				.setOnClickListener(new TextView.OnClickListener() {
 					@Override
 					public void onClick(View view) {
-						
+
 					}
 				});
 	}
-	
+
 	@Override
 	public void onPause(){
 		super.onPause();
-		
+
 		this.selectedIds = new ArrayList<Integer>();
 		this.selectedNames = new ArrayList<String>();
 	}
@@ -181,7 +180,7 @@ public class NewEntryActivity extends Activity {
 		super.onResume();
 
 		CheckBox check = ((CheckBox) findViewById(R.id.entry_divideCheckBox));
-		if (this.numIds > 0) {
+		if (this.numIds > 0){
 
 			/* Set the Who button to display all users */
 			StringBuilder displayNames = new StringBuilder();
@@ -200,18 +199,18 @@ public class NewEntryActivity extends Activity {
 				check.setEnabled(true);
 			} else {
 				/* Disable All Check boxes */
-				check.setEnabled(false);
 				check.setChecked(false);
-				this.divideCheck.setEnabled(false);
+				check.setEnabled(false);
 				this.divideCheck.setChecked(false);
+				this.divideCheck.setEnabled(false);
 			}
 		} else {
 			this.whoBox.setText("");
 			/* Disable All Check boxes */
-			check.setEnabled(false);
 			check.setChecked(false);
-			this.divideCheck.setEnabled(false);
+			check.setEnabled(false);
 			this.divideCheck.setChecked(false);
+			this.divideCheck.setEnabled(false);
 		}
 	}
 
@@ -245,17 +244,17 @@ public class NewEntryActivity extends Activity {
 		try {
 			/* SQL update for multiple people */
 			int numSelectedIds = this.selectedIds.size();
-			
-			
-			
+
+
+
 			/* The remainder of the division of the amount, will be added to balances of others until 0 */
 			int remainder = -1;
 			if (numSelectedIds > 1) {
-				
+
 				/* Include yourself when dividing? */
 				if (this.includeCheck.isChecked())
 					numSelectedIds = numSelectedIds + 1;
-				
+
 				/* Determine the amount for each person in the entry */
 				int newAmount = 0;
 				if (this.divideCheck.isChecked()) {
@@ -278,9 +277,9 @@ public class NewEntryActivity extends Activity {
 							amountWithBal = amountWithBal - 1;
 							remainder--;
 						}
-						
+
 					}
-						
+
 					int id = this.selectedIds.get(i);
 					addNewEntry(db, id, amountWithBal, title, notes);
 				}
@@ -354,7 +353,7 @@ public class NewEntryActivity extends Activity {
 			this.divideCheck.toggle();
 		}
 	}
-	
+
 	/* Toggle whether the includeCheckbox is visible */
 	private void toggleIncludeView(){
 		if (this.includeLay.getVisibility() == View.GONE){
