@@ -207,6 +207,11 @@ public class NewEntryActivity extends Activity {
 			}
 		} else {
 			this.whoBox.setText("");
+			/* Disable All Check boxes */
+			check.setEnabled(false);
+			check.setChecked(false);
+			this.divideCheck.setEnabled(false);
+			this.divideCheck.setChecked(false);
 		}
 	}
 
