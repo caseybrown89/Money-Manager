@@ -4,19 +4,25 @@ public class TextBalance {
 	private int mId;
 	private String mDate = "";
 	private String mName = "";
-	private int mAmount;
+	private int mBalance;
+	private String mLatestDate = "";
+	private String mLatestWhere = "";
+	private int mLatestAmount;
 
-	public TextBalance(int id, String name, int amount){
+	public TextBalance(int id, String name, int balance, String latestDate, String latestWhere, int latestAmount){
 		this.mId = id;
 		this.mName = name;
-		this.mAmount = amount;
+		this.mBalance = balance;
+		this.mLatestDate = latestDate;
+		this.mLatestWhere = latestWhere;
+		this.mLatestAmount = latestAmount;
 	}
 
-	public TextBalance(int id, String date, String name, int amount){
+	public TextBalance(int id, String date, String name, int balance){
 		this.mId = id;
 		this.mDate = date;
 		this.mName = name;
-		this.mAmount = amount;
+		this.mBalance = balance;
 	}
 
 	public int getId(){
@@ -43,11 +49,35 @@ public class TextBalance {
 		this.mDate = date;
 	}
 
-	public int getAmount(){
-		return this.mAmount;
+	public int getBalance(){
+		return this.mBalance;
 	}
 
-	public void setAmount(int amt){
-		this.mAmount = amt;
+	public void setBalance(int amt){
+		this.mBalance = amt;
+	}
+	
+	public String getLatestDate(){
+		return this.mLatestDate;
+	}
+
+	public void setLatestDate(String date){
+		this.mLatestDate = date;
+	}
+	
+	public String getLatestWhere(){
+		return this.mLatestWhere;
+	}
+
+	public void setLatestWhere(String where){
+		this.mLatestWhere = where;
+	}
+	
+	public int getLatestAmount(){
+		return this.mLatestAmount;
+	}
+
+	public void setLatestAmount(int amt){
+		this.mLatestAmount= amt;
 	}
 }

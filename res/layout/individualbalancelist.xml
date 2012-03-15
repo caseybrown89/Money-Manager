@@ -5,29 +5,30 @@
     android:orientation="horizontal"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
     android:paddingTop="5sp"
     android:paddingBottom="5sp">
 
 	<TextView
-	    android:id="@+id/indiv_date" 
+	    android:id="@+id/indivList_date" 
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
 	    android:textColor="#000000"
-	    android:textSize="18sp"
+	    android:textSize="14sp"
 	    android:paddingRight="10sp"/>
 
 	<TextView
-	    android:id="@+id/indiv_title"
+	    android:id="@+id/indivList_title"
 		android:layout_width="wrap_content"
 	  	android:layout_height="wrap_content"
 	  	android:textColor="#000000"
-	  	android:textSize="18sp"
-	  	android:paddingRight="10sp"	/>
-	
+	  	android:textSize="14sp"
+	  	android:paddingRight="10sp"/>
+
 	<TextView
-	    android:id="@+id/indiv_amount"
+	    android:id="@+id/indivList_amount"
 		android:layout_width="wrap_content"
 	  	android:layout_height="wrap_content"
 	  	android:textColor="#000000"
-	  	android:textSize="18sp"	/>
+	  	android:textSize="14sp"	/>
 </LinearLayout>

@@ -36,6 +36,9 @@
     <!--  View Balances Screen -->
     <string name="balance_mainTitle">Balances</string>
     <string name="emptyBalances">No Active Balances!</string>
+    <string name="balancelist_bal">Balance:</string>
+    <string name="balancelist_entry">Latest Entry:</string>
+    <string name="balancelist_noentry">No Entry</string>
     
     <!--  New Entry Screen -->
     <string name="entry_mainTitle">New Entry</string>

@@ -40,6 +40,7 @@ public class TextCheckboxAdapter extends BaseAdapter{
 		return position;
 	}
 
+	@Override
 	public View getView(int position, View convertView, ViewGroup parent){
 		TextCheckboxView tcv;
 		if (convertView == null){

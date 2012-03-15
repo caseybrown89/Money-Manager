@@ -37,10 +37,6 @@ public class ViewIndividualBalanceActivity extends ListActivity {
 	private String name;
 	private int amount;
 	private int personId;
-	private static String[] FROM = {_ID, DATE_ENTRY, TITLE_ENTRY, AMOUNT_ENTRY};
-	private static String ORDER_BY = DATE_ENTRY + " DESC";
-	private static int[] TO = {0 ,R.id.indiv_date, R.id.indiv_title, R.id.indiv_amount};
-	private ListView lv;
 
 	/* entryIds contains the entry ids of each entry listed on the ListView, entryIds is
 	 * used when calling the ViewEntryActivity

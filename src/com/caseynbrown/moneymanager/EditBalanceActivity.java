@@ -33,9 +33,6 @@ public class EditBalanceActivity extends Activity{
 
 	/* DB related */
 	private DBData database;
-	private static String[] FROM = {_ID, NAME_PEOPLE, AMOUNT_PEOPLE};
-	private static String ORDER_BY = NAME_PEOPLE + " DESC";
-	private static int[] TO = {0, R.id.rowName, 0 };
 
 	int selectedId;
 	int amount;
@@ -217,7 +214,7 @@ public class EditBalanceActivity extends Activity{
     	/* Append fields to the errorMessage */
     	for (String s: input){
     		errorMessage.append(" ");
-    		errorMessage.append(errorMessage);
+    		errorMessage.append(s);
     	}
     	
     	Toast t = new Toast(this);

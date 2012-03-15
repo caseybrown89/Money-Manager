@@ -40,7 +40,7 @@ public class NewEntryActivity extends Activity {
 	private DBData database;
 	private static String[] FROM = { _ID, NAME_PEOPLE, AMOUNT_PEOPLE };
 	private static String ORDER_BY = NAME_PEOPLE + " DESC";
-	private static int[] TO = { 0, R.id.rowName, 0 };
+	private static int[] TO = { 0, R.id.balancelist_rowName, 0 };
 
 	/*
 	 * Create boolean and string objects to persist amount from modal amount

@@ -47,7 +47,9 @@ public class TextBalanceAdapter extends BaseAdapter{
 		} else {
 			tcv = (TextBalanceView) convertView;
 			tcv.setName(mItems.get(position).getName());
-			tcv.setAmount(mItems.get(position).getAmount());
+			tcv.setAmount(mItems.get(position).getBalance());
+			tcv.setLatest(mItems.get(position).getDate(), mItems.get(position).getLatestWhere());
+			tcv.setLatestAmount(mItems.get(position).getLatestAmount());
 
 			// Check if we're including date
 			if (! mItems.get(position).getDate().equals(""))

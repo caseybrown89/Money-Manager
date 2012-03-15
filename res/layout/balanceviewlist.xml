@@ -1,25 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-    <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="horizontal"
+   <LinearLayout
+       xmlns:android="http://schemas.android.com/apk/res/android"
+       android:orientation="horizontal"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:paddingTop="5sp"
+       android:paddingBottom="5sp">
+	
+       <LinearLayout
+        android:orientation="vertical"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="5sp"
-        android:paddingBottom="5sp">
-
+        android:layout_height="wrap_content">
+        
 		<TextView
-		    android:id="@+id/rowName" 
+		    android:id="@+id/balancelist_rowName" 
 		    android:layout_width="wrap_content"
 		    android:layout_height="wrap_content"
 		    android:textColor="#000000"
-		    android:textSize="18sp"
-		    android:paddingRight="10sp"/>
-
-		<TextView
-		    android:id="@+id/rowAmount"
-			android:layout_width="wrap_content"
-		  	android:layout_height="wrap_content"
-		  	android:textColor="#000000"
-		  	android:textSize="18sp"	/>
+		    android:textSize="14sp"
+		    android:textStyle="bold"/>
+		
+		<LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        
+		    <TextView
+		        android:layout_width="wrap_content"
+			  	android:layout_height="wrap_content"
+			  	android:textColor="#000000"
+			  	android:textSize="14sp"
+			  	android:text="@string/balancelist_bal"
+			  	android:paddingRight="4sp"/>
+		
+			<TextView
+			    android:id="@+id/balancelist_rowAmount"
+				android:layout_width="wrap_content"
+			  	android:layout_height="wrap_content"
+			  	android:textColor="#000000"
+			  	android:textSize="14sp"/>            
+        </LinearLayout>   
+              
+       <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        
+		    <TextView
+		        android:id="@+id/balancelist_entry"
+		        android:layout_width="wrap_content"
+			  	android:layout_height="wrap_content"
+			  	android:textColor="#000000"
+			  	android:textSize="14sp"
+			  	android:text="@string/balancelist_entry"
+			  	android:paddingRight="4sp"/>
+		    
+		    <TextView
+		        android:id="@+id/balancelist_entryDateWhere"
+		        android:layout_width="wrap_content"
+			  	android:layout_height="wrap_content"
+			  	android:textColor="#000000"
+			  	android:textSize="14sp"
+			  	android:text="@string/balancelist_noentry"
+			  	android:paddingRight="4sp"/>
+		
+			<TextView
+			    android:id="@+id/balancelist_entryAmount"
+				android:layout_width="wrap_content"
+			  	android:layout_height="wrap_content"
+			  	android:textColor="#000000"
+			  	android:textSize="14sp"/>            
+        </LinearLayout>   
 	</LinearLayout>
+</LinearLayout>
