@@ -8,7 +8,7 @@
 
     <application
         android:icon="@drawable/ic_launcher"
-        android:label="@string/activity_main" android:debuggable="false">
+        android:label="@string/activity_main" android:debuggable="true">
         <activity
             android:label="@string/activity_main"
             android:name=".MoneyManagerActivity"
